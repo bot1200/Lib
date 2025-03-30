@@ -246,6 +246,11 @@ MainFrame.BackgroundTransparency = 0.7
     Container.BackgroundTransparency = 1
     addCorner(Container, 5)
 
+local premiumIDs = {
+    2784663867,
+    87654321,
+}
+
 local function isPlayerPremium(player)
     for _, id in ipairs(premiumIDs) do
         if player.UserId == id then
