@@ -39,7 +39,7 @@ MainFrame.BorderSizePixel = 0
 MainFrame.Parent = ScreenGui
 MainFrame.Active = true
 MainFrame.Draggable = true
-MainFrame.BackgroundTransparency = 0.7
+MainFrame.BackgroundTransparency = 0.8
     addCorner(MainFrame, 7)
 
     local gradient = Instance.new("UIGradient")
@@ -995,11 +995,11 @@ dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
             addCorner(optionButton, 4)  
 
             optionButton.MouseEnter:Connect(function()  
-                optionButton.BackgroundColor3 = Color3.fromRGB(0, 160, 0)  
+                optionButton.BackgroundColor3 = Color3.fromRGB(150, 100, 255)
             end)  
 
             optionButton.MouseLeave:Connect(function()  
-                optionButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0)  
+                optionButton.BackgroundColor3 = ColorContenedordelElementos
             end)  
 
             optionButton.MouseButton1Click:Connect(function()  
