@@ -22,8 +22,9 @@ local redondoContenedor = 10
 local TransparenciaContenedordelElementos = 0.5
 local TamanoContenedor = UDim2.new(1, 0, 0, 45)
 local TransparenciaContenedor = 0.7
-local FrameContenedor = Color3.fromRGB(0, 140, 0)
-local bordes = Color3.fromRGB(0, 140, 0)
+local FrameContenedor = Color3.fromRGB(138, 43, 250)
+local bordes = Color3.fromRGB(138, 43, 250)
+local main = Color3.fromRGB(138, 43, 226)
 
 function Library:CreateUI(title, description)
     local ScreenGui = Instance.new("ScreenGui")
@@ -32,7 +33,7 @@ function Library:CreateUI(title, description)
     local MainFrame = Instance.new("Frame")
 MainFrame.Size = UDim2.new(0, 590, 0, 300)
 MainFrame.Position = UDim2.new(0.5, -MainFrame.Size.X.Offset / 2, 0.5, -MainFrame.Size.Y.Offset / 2 - 30)
-MainFrame.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
+MainFrame.BackgroundColor3 = Color3.fromRGB(138, 43, 226)
 MainFrame.BorderSizePixel = 0
 MainFrame.Parent = ScreenGui
 MainFrame.Active = true
@@ -149,7 +150,7 @@ MainFrame.BackgroundTransparency = 0.7
     button.BackgroundTransparency = 0.7
     button.Draggable = true
     button.BorderSizePixel = 0
-    button.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+    button.BackgroundColor3 = bordes
     button.Parent = screenGui
     
     UICorner.CornerRadius = UDim.new(0, 10)
@@ -178,7 +179,7 @@ MainFrame.BackgroundTransparency = 0.7
 
     local TopBar = Instance.new("Frame")
     TopBar.Size = UDim2.new(1, 0, 0, 30)
-    TopBar.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+    TopBar.BackgroundColor3 = bordes
     TopBar.BorderSizePixel = 0
     TopBar.BackgroundTransparency = 0.5
     TopBar.ZIndex = 10
@@ -188,7 +189,7 @@ MainFrame.BackgroundTransparency = 0.7
     local Line = Instance.new("Frame")
     Line.Size = UDim2.new(1, 0, 0, 2)
     Line.Position = UDim2.new(0, 0, 0, 30)
-    Line.BackgroundColor3 = Color3.fromRGB(0, 255, 100)
+    Line.BackgroundColor3 = bordes
     Line.BorderSizePixel = 0
     Line.ZIndex = 12
     Line.Parent = TopBar
@@ -268,7 +269,7 @@ function Tab:AddTab(isPremium, tabName)
     tabButton.Text = tabName
     tabButton.Font = Enum.Font.Gotham
     tabButton.TextSize = 15
-    tabButton.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
+    tabButton.BackgroundColor3 = main
     tabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
     tabButton.BackgroundTransparency = TransparenciaContenedor
     tabButton.Parent = TabsContainer
@@ -354,7 +355,7 @@ function Tab:AddTab(isPremium, tabName)
 
         for _, button in pairs(TabsContainer:GetChildren()) do
             if button:IsA("TextButton") then
-                button.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
+                button.BackgroundColor3 = main
             end
         end
         tabButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0)
@@ -806,7 +807,7 @@ addCorner(sliderTrack, 6)
 
 local sliderFill = Instance.new("Frame")
 sliderFill.Size = UDim2.new(0, 0, 1, 0)
-sliderFill.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
+sliderFill.BackgroundColor3 = main
 sliderFill.Parent = sliderTrack
 sliderFill.BackgroundTransparency = TransparenciaContenedordelElementos
 addCorner(sliderFill, 6)
