@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("Script cargado xd")
+print("lib")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -25,6 +25,7 @@ local TransparenciaContenedor = 0.7
 local FrameContenedor = Color3.fromRGB(138, 43, 250)
 local bordes = Color3.fromRGB(138, 43, 250)
 local main = Color3.fromRGB(138, 43, 226)
+local ColorContenedordelElementos = Color3.fromRGB(75, 0, 130)
 
 function Library:CreateUI(title, description)
     local ScreenGui = Instance.new("ScreenGui")
@@ -59,7 +60,7 @@ MainFrame.BackgroundTransparency = 0.7
     confirmationFrame.Size = UDim2.new(0, 300, 0, 150)
     confirmationFrame.Position = UDim2.new(0.5, -150, 0.5, -75)
     confirmationFrame.BackgroundColor3 = FrameContenedor
-    confirmationFrame.BackgroundTransparency = 0.2
+    confirmationFrame.BackgroundTransparency = 0.4
     confirmationFrame.Parent = backgroundOverlay
     confirmationFrame.ZIndex = 19
     addCorner(confirmationFrame, 7)
@@ -74,26 +75,28 @@ MainFrame.BackgroundTransparency = 0.7
     confirmationLabel.Parent = confirmationFrame
 
     local yesButton = Instance.new("TextButton")
-    yesButton.Text = "Yeah"
-    yesButton.ZIndex = 20
-    yesButton.TextSize = 13
-    yesButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    yesButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
-    yesButton.Size = UDim2.new(0.5, -10, 0, 40)
-    yesButton.Position = UDim2.new(0, 5, 1, -45)
-    yesButton.Parent = confirmationFrame
-    addCorner(yesButton, 4)
+yesButton.Text = "Yeah"
+yesButton.ZIndex = 20
+yesButton.TextSize = 13
+yesButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+yesButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+yesButton.BackgroundTransparency = 0.4
+yesButton.Size = UDim2.new(0.5, -10, 0, 40)
+yesButton.Position = UDim2.new(0, 5, 1, -45)
+yesButton.Parent = confirmationFrame
+addCorner(yesButton, 4)
 
-    local noButton = Instance.new("TextButton")
-    noButton.Text = "No"
-    noButton.TextSize = 13
-    noButton.ZIndex = 20
-    noButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    noButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
-    noButton.Size = UDim2.new(0.5, -10, 0, 40)
-    noButton.Position = UDim2.new(0.5, 5, 1, -45)
-    noButton.Parent = confirmationFrame
-    addCorner(noButton, 4)
+local noButton = Instance.new("TextButton")
+noButton.Text = "No"
+noButton.TextSize = 13
+noButton.ZIndex = 20
+noButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+noButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+noButton.BackgroundTransparency = 0.4
+noButton.Size = UDim2.new(0.5, -10, 0, 40)
+noButton.Position = UDim2.new(0.5, 5, 1, -45)
+noButton.Parent = confirmationFrame
+addCorner(noButton, 4)
 
     local CloseButton = Instance.new("TextButton")
     CloseButton.Size = UDim2.new(0, 20, 0, 20)
@@ -562,7 +565,7 @@ confirmButton.Text = "Confirm"
 confirmButton.Font = Enum.Font.Gotham
 confirmButton.TextSize = 14
 confirmButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-confirmButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0) -- Botón Confirmar verde
+confirmButton.BackgroundColor3 = ColorContenedordelElementos
 confirmButton.BorderSizePixel = 0
 confirmButton.Parent = colorPickerPopup
 addCorner(confirmButton, 5)
@@ -574,7 +577,7 @@ rainbowButton.Text = "Rainbow"
 rainbowButton.Font = Enum.Font.Gotham
 rainbowButton.TextSize = 14
 rainbowButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-rainbowButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0) -- Botón Rainbow verde
+rainbowButton.BackgroundColor3 = ColorContenedordelElementos
 rainbowButton.BorderSizePixel = 0
 rainbowButton.Parent = colorPickerPopup
 addCorner(rainbowButton, 5)
@@ -707,7 +710,7 @@ label.Parent = toggleFrame
 local toggleButton = Instance.new("TextButton")
 toggleButton.Size = UDim2.new(0, 45, 0, 25)
 toggleButton.Position = UDim2.new(1, -70, 0.5, -10)
-toggleButton.BackgroundColor3 = FrameContenedor
+toggleButton.BackgroundColor3 = ColorContenedordelElementos
 toggleButton.Text = ""
 toggleButton.AutoButtonColor = false
 toggleButton.Parent = toggleFrame
@@ -792,7 +795,7 @@ sliderTextBox.TextSize = 18
 sliderTextBox.BackgroundTransparency = TransparenciaContenedordelElementos
 sliderTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 sliderTextBox.TextXAlignment = Enum.TextXAlignment.Center
-sliderTextBox.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+sliderTextBox.BackgroundColor3 = ColorContenedordelElementos
 sliderTextBox.ClearTextOnFocus = false
 sliderTextBox.Parent = sliderFrame
 addCorner(sliderTextBox, 6)
@@ -801,7 +804,7 @@ local sliderTrack = Instance.new("Frame")
 sliderTrack.Size = UDim2.new(1, -40, 0, 6)
 sliderTrack.Position = UDim2.new(0, 20, 0, 30)
 sliderTrack.BackgroundTransparency = TransparenciaContenedordelElementos
-sliderTrack.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+sliderTrack.BackgroundColor3 = ColorContenedordelElementos
 sliderTrack.Parent = sliderFrame
 addCorner(sliderTrack, 6)
 
@@ -911,7 +914,7 @@ addCorner(borderFrame, redondoContenedor)
     local dropdownFrame = Instance.new("Frame")
     dropdownFrame.Size = UDim2.new(0, 140, 0, 30)
 dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
-    dropdownFrame.BackgroundColor3 = FrameContenedor
+    dropdownFrame.BackgroundColor3 = ColorContenedordelElementos
     dropdownFrame.Parent = Dropdown
     dropdownFrame.BackgroundTransparency = 1
     addCorner(dropdownFrame, 5)
@@ -924,7 +927,7 @@ dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
     dropdownButton.TextSize = 13
     dropdownButton.BackgroundTransparency = TransparenciaContenedordelElementos
     dropdownButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    dropdownButton.BackgroundColor3 = FrameContenedor
+    dropdownButton.BackgroundColor3 = ColorContenedordelElementos
     dropdownButton.Parent = dropdownFrame
     addCorner(dropdownButton, 5)
 
@@ -932,7 +935,7 @@ dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
     dropdownList.Size = UDim2.new(1, 0, 0, 0)
     dropdownList.Position = UDim2.new(0, 0, 1, 5)
     dropdownList.Visible = false
-    dropdownList.BackgroundColor3 = FrameContenedor
+    dropdownList.BackgroundColor3 = ColorContenedordelElementos
     dropdownList.ClipsDescendants = true
     dropdownList.BackgroundTransparency = TransparenciaContenedordelElementos
     dropdownList.Parent = dropdownFrame
@@ -987,7 +990,7 @@ dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
             optionButton.BackgroundTransparency = TransparenciaContenedordelElementos
             optionButton.ZIndex = 4  
             optionButton.TextColor3 = Color3.fromRGB(255, 255, 255)  
-            optionButton.BackgroundColor3 = FrameContenedor
+            optionButton.BackgroundColor3 = ColorContenedordelElementos
             optionButton.Parent = scrollFrame  
             addCorner(optionButton, 4)  
 
@@ -1066,7 +1069,7 @@ textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 textBox.BackgroundColor3 = Color3.fromRGB(0, 180, 0)
 textBox.Parent = textboxFrame
 
-textBox.BackgroundColor3 = FrameContenedor
+textBox.BackgroundColor3 = ColorContenedordelElementos
 textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 textboxFrame.BackgroundColor3 = FrameContenedor
 
@@ -1190,7 +1193,7 @@ addCorner(borderFrame, redondoContenedor)
 	local KeybindButton = Instance.new("TextButton")
 	KeybindButton.Name = "KeybindButton"
 	KeybindButton.Parent = KeybindFrame
-	KeybindButton.BackgroundColor3 = Color3.fromRGB(0, 160, 0)
+	KeybindButton.BackgroundColor3 = ColorContenedordelElementos
 	KeybindButton.Position = UDim2.new(0, 310, 0, 5)
 	KeybindButton.Size = UDim2.new(0, 140, 0, 30)
 	KeybindButton.Font = Enum.Font.Gotham
