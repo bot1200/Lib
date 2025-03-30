@@ -373,6 +373,7 @@ function Tab:AddTab(isPremium, tabName)
         if not isPlayerPremium(LocalPlayer) then
             local overlay = Instance.new("Frame")
             overlay.Size = UDim2.new(1, 0, 1, 0)
+            overlay.Active = true
             overlay.BackgroundColor3 = Color3.new(0, 0, 0)
             overlay.BackgroundTransparency = 0.5
             overlay.ZIndex = tabFrame.ZIndex + 1
@@ -382,7 +383,7 @@ function Tab:AddTab(isPremium, tabName)
             label.Size = UDim2.new(1, 0, 0, 30)
             label.Position = UDim2.new(0, 0, 0.5, -15)
             label.BackgroundTransparency = 1
-            label.Text = "Solo para premium"
+            label.Text = "Premium only"
             label.TextColor3 = Color3.new(1, 1, 1)
             label.Font = Enum.Font.GothamBold
             label.TextSize = 20
