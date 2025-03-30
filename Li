@@ -1,4 +1,4 @@
-rainbowButton.Positlocal Library = {}
+local Library = {}
 
 local coreGui = game:GetService("CoreGui")
 local existingGui = coreGui:FindFirstChild("xdd")
