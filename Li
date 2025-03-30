@@ -213,7 +213,7 @@ MainFrame.BackgroundTransparency = 0.7
     DescriptionLabel.Text = description
     DescriptionLabel.TextSize = 14
     DescriptionLabel.ZIndex = 11
-    DescriptionLabel.TextColor3 = Color3.fromRGB(191, 255, 0)
+    DescriptionLabel.TextColor3 = Color3.fromRGB(216, 191, 216)
     DescriptionLabel.Font = Enum.Font.SourceSans
     DescriptionLabel.TextXAlignment = Enum.TextXAlignment.Left
     DescriptionLabel.Parent = TopBar
@@ -358,7 +358,7 @@ function Tab:AddTab(isPremium, tabName)
                 button.BackgroundColor3 = main
             end
         end
-        tabButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0)
+        tabButton.BackgroundColor3 = Color3.fromRGB(75, 0, 130)
 
         for _, frame in pairs(Container:GetChildren()) do
             if frame:IsA("Frame") then
@@ -707,7 +707,7 @@ label.Parent = toggleFrame
 local toggleButton = Instance.new("TextButton")
 toggleButton.Size = UDim2.new(0, 45, 0, 25)
 toggleButton.Position = UDim2.new(1, -70, 0.5, -10)
-toggleButton.BackgroundColor3 = Color3.fromRGB(0, 80, 10)
+toggleButton.BackgroundColor3 = FrameContenedor
 toggleButton.Text = ""
 toggleButton.AutoButtonColor = false
 toggleButton.Parent = toggleFrame
@@ -911,7 +911,7 @@ addCorner(borderFrame, redondoContenedor)
     local dropdownFrame = Instance.new("Frame")
     dropdownFrame.Size = UDim2.new(0, 140, 0, 30)
 dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
-    dropdownFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+    dropdownFrame.BackgroundColor3 = FrameContenedor
     dropdownFrame.Parent = Dropdown
     dropdownFrame.BackgroundTransparency = 1
     addCorner(dropdownFrame, 5)
@@ -924,7 +924,7 @@ dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
     dropdownButton.TextSize = 13
     dropdownButton.BackgroundTransparency = TransparenciaContenedordelElementos
     dropdownButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    dropdownButton.BackgroundColor3 = Color3.fromRGB(0, 130, 0)
+    dropdownButton.BackgroundColor3 = FrameContenedor
     dropdownButton.Parent = dropdownFrame
     addCorner(dropdownButton, 5)
 
@@ -932,7 +932,7 @@ dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
     dropdownList.Size = UDim2.new(1, 0, 0, 0)
     dropdownList.Position = UDim2.new(0, 0, 1, 5)
     dropdownList.Visible = false
-    dropdownList.BackgroundColor3 = Color3.fromRGB(0, 130, 0)
+    dropdownList.BackgroundColor3 = FrameContenedor
     dropdownList.ClipsDescendants = true
     dropdownList.BackgroundTransparency = TransparenciaContenedordelElementos
     dropdownList.Parent = dropdownFrame
@@ -987,7 +987,7 @@ dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
             optionButton.BackgroundTransparency = TransparenciaContenedordelElementos
             optionButton.ZIndex = 4  
             optionButton.TextColor3 = Color3.fromRGB(255, 255, 255)  
-            optionButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0)  
+            optionButton.BackgroundColor3 = FrameContenedor
             optionButton.Parent = scrollFrame  
             addCorner(optionButton, 4)  
 
@@ -1066,7 +1066,7 @@ textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 textBox.BackgroundColor3 = Color3.fromRGB(0, 180, 0)
 textBox.Parent = textboxFrame
 
-textBox.BackgroundColor3 = Color3.fromRGB(0, 160, 0)
+textBox.BackgroundColor3 = FrameContenedor
 textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 textboxFrame.BackgroundColor3 = FrameContenedor
 
