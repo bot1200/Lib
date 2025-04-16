@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("dd")
+print("d")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -910,82 +910,71 @@ end
 
 function Library.addSlider(container, name, minValue, maxValue, defaultValue, callback)
     local sliderFrame = Instance.new("Frame")
-    sliderFrame.Size = UDim2.new(0, 200, 0, 70)
+    sliderFrame.Size = TamanoContenedor
     sliderFrame.BackgroundColor3 = FrameContenedor
     sliderFrame.BackgroundTransparency = TransparenciaContenedor
     sliderFrame.Parent = container
     addCorner(sliderFrame, redondoContenedor)
 
-    local stroke = Instance.new("UIStroke")
-    stroke.Thickness = 2
-    stroke.Color = Color3.fromRGB(255, 255, 255)
-    stroke.Parent = sliderFrame
+    local borderFrame = Instance.new("UIStroke")
+    borderFrame.Thickness = 2
+    borderFrame.Color = Color3.fromRGB(255, 255, 255)
+    borderFrame.Parent = sliderFrame
+    addCorner(borderFrame, redondoContenedor)
 
-    local sliderLabel = Instance.new("TextLabel")
-    sliderLabel.Size = UDim2.new(1, -60, 0, 20)
-    sliderLabel.Position = UDim2.new(0, 10, 0, 5)
-    sliderLabel.Text = name .. ": " .. tostring(defaultValue)
-    sliderLabel.Font = Enum.Font.Gotham
-    sliderLabel.TextSize = 15
-    sliderLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-    sliderLabel.TextXAlignment = Enum.TextXAlignment.Left
-    sliderLabel.BackgroundTransparency = 1
-    sliderLabel.Parent = sliderFrame
+    local sliderTextBox = Instance.new("TextBox")
+    sliderTextBox.Size = UDim2.new(0, 50, 0, 20)
+    sliderTextBox.Position = UDim2.new(1, -60, 0, 5)
+    sliderTextBox.Text = tostring(defaultValue)
+    sliderTextBox.Font = Enum.Font.Gotham
+    sliderTextBox.TextSize = 15
+    sliderTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+    sliderTextBox.BackgroundColor3 = ColorContenedordelElementos
+    sliderTextBox.BackgroundTransparency = TransparenciaContenedordelElementos
+    sliderTextBox.ClearTextOnFocus = false
+    sliderTextBox.Parent = sliderFrame
+    addCorner(sliderTextBox, 6)
 
-    local valueBox = Instance.new("TextBox")
-    valueBox.Size = UDim2.new(0, 50, 0, 20)
-    valueBox.Position = UDim2.new(1, -60, 0, 5)
-    valueBox.Text = tostring(defaultValue)
-    valueBox.Font = Enum.Font.Gotham
-    valueBox.TextSize = 15
-    valueBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-    valueBox.BackgroundColor3 = ColorContenedordelElementos
-    valueBox.BackgroundTransparency = TransparenciaContenedordelElementos
-    valueBox.ClearTextOnFocus = false
-    valueBox.Parent = sliderFrame
-    addCorner(valueBox, 6)
+    local sliderTrack = Instance.new("Frame")
+    sliderTrack.Size = UDim2.new(1, -20, 0, 6)
+    sliderTrack.Position = UDim2.new(0, 10, 0, 35)
+    sliderTrack.BackgroundColor3 = ColorContenedordelElementos
+    sliderTrack.BackgroundTransparency = TransparenciaContenedordelElementos
+    sliderTrack.Parent = sliderFrame
+    addCorner(sliderTrack, 6)
 
-    local track = Instance.new("Frame")
-    track.Size = UDim2.new(1, -20, 0, 6)
-    track.Position = UDim2.new(0, 10, 0, 35)
-    track.BackgroundColor3 = ColorContenedordelElementos
-    track.BackgroundTransparency = TransparenciaContenedordelElementos
-    track.Parent = sliderFrame
-    addCorner(track, 6)
+    local sliderFill = Instance.new("Frame")
+    sliderFill.Size = UDim2.new(0, 0, 1, 0)
+    sliderFill.Position = UDim2.new(0, 0, 0, 0)
+    sliderFill.BackgroundColor3 = main
+    sliderFill.BackgroundTransparency = TransparenciaContenedordelElementos
+    sliderFill.ZIndex = 1
+    sliderFill.Parent = sliderTrack
+    addCorner(sliderFill, 6)
 
-    local fill = Instance.new("Frame")
-    fill.Size = UDim2.new(0, 0, 1, 0)
-    fill.Position = UDim2.new(0, 0, 0, 0)
-    fill.BackgroundColor3 = main
-    fill.BackgroundTransparency = TransparenciaContenedordelElementos
-    fill.ZIndex = 1
-    fill.Parent = track
-    addCorner(fill, 6)
-
-    local thumb = Instance.new("Frame")
-    thumb.Size = UDim2.new(0, 12, 0, 12)
-    thumb.AnchorPoint = Vector2.new(0.5, 0.5)
-    thumb.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    thumb.Position = UDim2.new(0, 0, 0.5, 0)
-    thumb.ZIndex = 2
-    thumb.Parent = track
-    addCorner(thumb, 6)
+    local sliderThumb = Instance.new("Frame")
+    sliderThumb.Size = UDim2.new(0, 12, 0, 12)
+    sliderThumb.AnchorPoint = Vector2.new(0.5, 0.5)
+    sliderThumb.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    sliderThumb.Position = UDim2.new(0, 0, 0.5, 0)
+    sliderThumb.ZIndex = 2
+    sliderThumb.Parent = sliderTrack
+    addCorner(sliderThumb, 6)
 
     local function update(value)
         value = math.clamp(math.floor(value + 0.5), minValue, maxValue)
         local ratio = (value - minValue) / (maxValue - minValue)
-        fill.Size = UDim2.new(ratio, 0, 1, 0)
-        thumb.Position = UDim2.new(ratio, 0, 0.5, 0)
-        valueBox.Text = tostring(value)
-        sliderLabel.Text = name .. ": " .. tostring(value)
+        sliderFill.Size = UDim2.new(ratio, 0, 1, 0)
+        sliderThumb.Position = UDim2.new(ratio, 0, 0.5, 0)
+        sliderTextBox.Text = tostring(value)
         callback(value)
     end
 
-    track.InputBegan:Connect(function(input)
+    sliderTrack.InputBegan:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             local moveConn
             local function move(input)
-                local x = (input.Position.X - track.AbsolutePosition.X) / track.AbsoluteSize.X
+                local x = (input.Position.X - sliderTrack.AbsolutePosition.X) / sliderTrack.AbsoluteSize.X
                 x = math.clamp(x, 0, 1)
                 update(minValue + x * (maxValue - minValue))
             end
@@ -1003,8 +992,8 @@ function Library.addSlider(container, name, minValue, maxValue, defaultValue, ca
         end
     end)
 
-    valueBox.FocusLost:Connect(function()
-        local val = tonumber(valueBox.Text)
+    sliderTextBox.FocusLost:Connect(function()
+        local val = tonumber(sliderTextBox.Text)
         if val then
             update(val)
         else
