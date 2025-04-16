@@ -664,8 +664,9 @@ label.TextSize = 15
 label.Parent = ColorPicker
 
 local pickerFrame = Instance.new("Frame")
-pickerFrame.Size = UDim2.new(0, 140, 0, 30)
-pickerFrame.Position = UDim2.new(0, 250, 0, 5)
+pickerFrame.Size = UDim2.new(0, 120, 0, 30)
+pickerFrame.AnchorPoint = Vector2.new(1, 0)
+pickerFrame.Position = UDim2.new(1, -10, 0, 5)
 pickerFrame.BackgroundColor3 = defaultColor or Color3.fromRGB(0, 140, 0) -- Verde como color predeterminado
 pickerFrame.BackgroundTransparency = 0.1
 pickerFrame.BorderSizePixel = 2
@@ -949,7 +950,8 @@ function Library.addSlider(container, name, minValue, maxValue, defaultValue, ca
 
     local sliderTrack = Instance.new("Frame")
     sliderTrack.Size = UDim2.new(0, 120, 0, 6)
-    sliderTrack.Position = UDim2.new(0, 10, 0, 30) -- Debajo del TextBox
+    sliderTrack.Position = Position = UDim2.new(1, -10, 0, 30)
+    sliderTrack.AnchorPoint = Vector2.new(1, 0)
     sliderTrack.BackgroundColor3 = ColorContenedordelElementos
     sliderTrack.BackgroundTransparency = TransparenciaContenedordelElementos
     sliderTrack.Parent = sliderFrame
@@ -1086,7 +1088,7 @@ dropdownFrame.Position = UDim2.new(1, -10, 0, 5)
     dropdownList.Visible = false
     dropdownList.BackgroundColor3 = ColorContenedordelElementos
     dropdownList.ClipsDescendants = true
-    dropdownList.BackgroundTransparency = 0.15
+    dropdownList.BackgroundTransparency = 0.5
     dropdownList.Parent = container
     addCorner(dropdownList, 5)
 
