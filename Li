@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("d")
+print("dd")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -910,7 +910,7 @@ end
 
 function Library.addSlider(container, name, minValue, maxValue, defaultValue, callback)
     local sliderFrame = Instance.new("Frame")
-    sliderFrame.Size = TamanoContenedor
+    sliderFrame.Size = UDim2.new(0, 200, 0, 70)
     sliderFrame.BackgroundColor3 = FrameContenedor
     sliderFrame.BackgroundTransparency = TransparenciaContenedor
     sliderFrame.Parent = container
@@ -922,7 +922,7 @@ function Library.addSlider(container, name, minValue, maxValue, defaultValue, ca
     stroke.Parent = sliderFrame
 
     local sliderLabel = Instance.new("TextLabel")
-    sliderLabel.Size = UDim2.new(1, -90, 0, 20)
+    sliderLabel.Size = UDim2.new(1, -60, 0, 20)
     sliderLabel.Position = UDim2.new(0, 10, 0, 5)
     sliderLabel.Text = name .. ": " .. tostring(defaultValue)
     sliderLabel.Font = Enum.Font.Gotham
@@ -933,31 +933,29 @@ function Library.addSlider(container, name, minValue, maxValue, defaultValue, ca
     sliderLabel.Parent = sliderFrame
 
     local valueBox = Instance.new("TextBox")
-    valueBox.Size = UDim2.new(0, 60, 0, 20)
-    valueBox.Position = UDim2.new(1, -70, 0, 5)
+    valueBox.Size = UDim2.new(0, 50, 0, 20)
+    valueBox.Position = UDim2.new(1, -60, 0, 5)
     valueBox.Text = tostring(defaultValue)
     valueBox.Font = Enum.Font.Gotham
-    valueBox.TextSize = 18
+    valueBox.TextSize = 15
     valueBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-    valueBox.TextXAlignment = Enum.TextXAlignment.Center
-    valueBox.BackgroundTransparency = TransparenciaContenedordelElementos
     valueBox.BackgroundColor3 = ColorContenedordelElementos
+    valueBox.BackgroundTransparency = TransparenciaContenedordelElementos
     valueBox.ClearTextOnFocus = false
     valueBox.Parent = sliderFrame
     addCorner(valueBox, 6)
 
     local track = Instance.new("Frame")
-    track.Size = UDim2.new(0, 6, 1, -40)
-    track.Position = UDim2.new(1, -16, 0, 20)
+    track.Size = UDim2.new(1, -20, 0, 6)
+    track.Position = UDim2.new(0, 10, 0, 35)
     track.BackgroundColor3 = ColorContenedordelElementos
     track.BackgroundTransparency = TransparenciaContenedordelElementos
     track.Parent = sliderFrame
     addCorner(track, 6)
 
     local fill = Instance.new("Frame")
-    fill.Size = UDim2.new(1, 0, 0, 0)
-    fill.Position = UDim2.new(0, 0, 1, 0)
-    fill.AnchorPoint = Vector2.new(0, 1)
+    fill.Size = UDim2.new(0, 0, 1, 0)
+    fill.Position = UDim2.new(0, 0, 0, 0)
     fill.BackgroundColor3 = main
     fill.BackgroundTransparency = TransparenciaContenedordelElementos
     fill.ZIndex = 1
@@ -965,20 +963,19 @@ function Library.addSlider(container, name, minValue, maxValue, defaultValue, ca
     addCorner(fill, 6)
 
     local thumb = Instance.new("Frame")
-    thumb.Size = UDim2.new(0, 14, 0, 14)
+    thumb.Size = UDim2.new(0, 12, 0, 12)
     thumb.AnchorPoint = Vector2.new(0.5, 0.5)
     thumb.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    thumb.Position = UDim2.new(0.5, 0, 1, 0) -- se ajustará con `update`
+    thumb.Position = UDim2.new(0, 0, 0.5, 0)
     thumb.ZIndex = 2
     thumb.Parent = track
-    addCorner(thumb, 7)
+    addCorner(thumb, 6)
 
     local function update(value)
         value = math.clamp(math.floor(value + 0.5), minValue, maxValue)
         local ratio = (value - minValue) / (maxValue - minValue)
-        local y = 1 - ratio
-        fill.Size = UDim2.new(1, 0, ratio, 0)
-        thumb.Position = UDim2.new(0.5, 0, y, 0)
+        fill.Size = UDim2.new(ratio, 0, 1, 0)
+        thumb.Position = UDim2.new(ratio, 0, 0.5, 0)
         valueBox.Text = tostring(value)
         sliderLabel.Text = name .. ": " .. tostring(value)
         callback(value)
@@ -988,9 +985,9 @@ function Library.addSlider(container, name, minValue, maxValue, defaultValue, ca
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             local moveConn
             local function move(input)
-                local y = (input.Position.Y - track.AbsolutePosition.Y) / track.AbsoluteSize.Y
-                y = math.clamp(y, 0, 1)
-                update(minValue + (1 - y) * (maxValue - minValue))
+                local x = (input.Position.X - track.AbsolutePosition.X) / track.AbsoluteSize.X
+                x = math.clamp(x, 0, 1)
+                update(minValue + x * (maxValue - minValue))
             end
             move(input)
             moveConn = game:GetService("UserInputService").InputChanged:Connect(function(input2)
@@ -998,11 +995,9 @@ function Library.addSlider(container, name, minValue, maxValue, defaultValue, ca
                     move(input2)
                 end
             end)
-            local endedConn
-            endedConn = input.Changed:Connect(function()
+            input.Changed:Connect(function()
                 if input.UserInputState == Enum.UserInputState.End then
                     moveConn:Disconnect()
-                    endedConn:Disconnect()
                 end
             end)
         end
