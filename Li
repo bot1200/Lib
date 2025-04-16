@@ -909,123 +909,140 @@ end
 end
 
 function Library.addSlider(container, name, minValue, maxValue, defaultValue, callback)
-	local sliderFrame = Instance.new("Frame")
-	sliderFrame.Size = TamanoContenedor
-	sliderFrame.BackgroundColor3 = FrameContenedor
-	sliderFrame.Parent = container
-	sliderFrame.BackgroundTransparency = TransparenciaContenedor
+    -- Frame principal que contendrá todo el slider
+    local sliderFrame = Instance.new("Frame")
+    sliderFrame.Size = TamanoContenedor             -- Define el tamaño general (debes tenerlo definido previamente)
+    sliderFrame.BackgroundColor3 = FrameContenedor     -- Color de fondo del contenedor
+    sliderFrame.Parent = container
+    sliderFrame.BackgroundTransparency = TransparenciaContenedor
 
-	local borderFrame = Instance.new("Frame")
-	borderFrame.Size = UDim2.new(1, 0, 1, 0)
-	borderFrame.Position = UDim2.new(0, -2, 0, 0)
-	borderFrame.BackgroundTransparency = 1
-	borderFrame.ZIndex = sliderFrame.ZIndex -1
-	borderFrame.Parent = sliderFrame
+    -- Frame para el borde (con borde blanco y esquinas redondeadas)
+    local borderFrame = Instance.new("Frame")
+    borderFrame.Size = UDim2.new(1, 0, 1, 0)
+    borderFrame.Position = UDim2.new(0, -2, 0, 0)
+    borderFrame.BackgroundTransparency = 1
+    borderFrame.ZIndex = sliderFrame.ZIndex - 1
+    borderFrame.Parent = sliderFrame
 
-	local borderStroke = Instance.new("UIStroke")
-	borderStroke.Thickness = 2
-	borderStroke.Color = Color3.fromRGB(255, 255, 255)
-	borderStroke.Parent = borderFrame
-	addCorner(borderFrame, redondoContenedor)
-	addCorner(sliderFrame, redondoContenedor)
+    local borderStroke = Instance.new("UIStroke")
+    borderStroke.Thickness = 2
+    borderStroke.Color = Color3.fromRGB(255, 255, 255)
+    borderStroke.Parent = borderFrame
 
-	local sliderLabel = Instance.new("TextLabel")
-	sliderLabel.Size = UDim2.new(1, -90, 0, 20)
-	sliderLabel.Position = UDim2.new(0, 10, 0, 5)
-	sliderLabel.Text = name .. ": " .. tostring(defaultValue)
-	sliderLabel.Font = Enum.Font.Gotham
-	sliderLabel.TextSize = 15
-	sliderLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-	sliderLabel.TextXAlignment = Enum.TextXAlignment.Left
-	sliderLabel.BackgroundTransparency = 1
-	sliderLabel.Parent = sliderFrame
+    addCorner(borderFrame, redondoContenedor)
+    addCorner(sliderFrame, redondoContenedor)
 
-	local sliderTextBox = Instance.new("TextBox")
-	sliderTextBox.Size = UDim2.new(0, 60, 0, 20)
-	sliderTextBox.Position = UDim2.new(1, -70, 0, 5)
-	sliderTextBox.Text = tostring(defaultValue)
-	sliderTextBox.Font = Enum.Font.Gotham
-	sliderTextBox.TextSize = 18
-	sliderTextBox.BackgroundTransparency = TransparenciaContenedordelElementos
-	sliderTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-	sliderTextBox.TextXAlignment = Enum.TextXAlignment.Center
-	sliderTextBox.BackgroundColor3 = ColorContenedordelElementos
-	sliderTextBox.ClearTextOnFocus = false
-	sliderTextBox.Parent = sliderFrame
-	addCorner(sliderTextBox, 6)
+    -- Etiqueta que muestra el nombre y el valor actual
+    local sliderLabel = Instance.new("TextLabel")
+    sliderLabel.Size = UDim2.new(1, -90, 0, 20)
+    sliderLabel.Position = UDim2.new(0, 10, 0, 5)
+    sliderLabel.Text = name .. ": " .. tostring(defaultValue)
+    sliderLabel.Font = Enum.Font.Gotham
+    sliderLabel.TextSize = 15
+    sliderLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    sliderLabel.TextXAlignment = Enum.TextXAlignment.Left
+    sliderLabel.BackgroundTransparency = 1
+    sliderLabel.Parent = sliderFrame
 
-	local sliderTrack = Instance.new("Frame")
-	sliderTrack.Size = UDim2.new(0, 6, 0, 30)
-	sliderTrack.Position = UDim2.new(1, -25, 0, 28)
-	sliderTrack.BackgroundTransparency = TransparenciaContenedordelElementos
-	sliderTrack.BackgroundColor3 = ColorContenedordelElementos
-	sliderTrack.Parent = sliderFrame
-	addCorner(sliderTrack, 6)
+    -- Caja de texto que muestra/permite ingresar el valor
+    local sliderTextBox = Instance.new("TextBox")
+    sliderTextBox.Size = UDim2.new(0, 60, 0, 20)
+    sliderTextBox.Position = UDim2.new(1, -70, 0, 5)
+    sliderTextBox.Text = tostring(defaultValue)
+    sliderTextBox.Font = Enum.Font.Gotham
+    sliderTextBox.TextSize = 18
+    sliderTextBox.BackgroundTransparency = TransparenciaContenedordelElementos
+    sliderTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+    sliderTextBox.TextXAlignment = Enum.TextXAlignment.Center
+    sliderTextBox.BackgroundColor3 = ColorContenedordelElementos
+    sliderTextBox.ClearTextOnFocus = false
+    sliderTextBox.Parent = sliderFrame
+    addCorner(sliderTextBox, 6)
 
-	local sliderFill = Instance.new("Frame")
-	sliderFill.Size = UDim2.new(1, 0, 0, 0)
-	sliderFill.Position = UDim2.new(0, 0, 1, 0)
-	sliderFill.AnchorPoint = Vector2.new(0, 1)
-	sliderFill.BackgroundColor3 = main
-	sliderFill.BackgroundTransparency = TransparenciaContenedordelElementos
-	sliderFill.Parent = sliderTrack
-	addCorner(sliderFill, 6)
+    -- Track del slider: posicion vertical en el lado derecho
+    local sliderTrack = Instance.new("Frame")
+    sliderTrack.Size = UDim2.new(0, 6, 1, -40)  
+    sliderTrack.Position = UDim2.new(1, -16, 0, 20)
+    sliderTrack.BackgroundTransparency = TransparenciaContenedordelElementos
+    sliderTrack.BackgroundColor3 = ColorContenedordelElementos
+    sliderTrack.Parent = sliderFrame
+    addCorner(sliderTrack, 6)
 
-	local sliderThumb = Instance.new("Frame")
-	sliderThumb.Size = UDim2.new(0, 14, 0, 14)
-	sliderThumb.AnchorPoint = Vector2.new(0.5, 0.5)
-	sliderThumb.Position = UDim2.new(0.5, 0, 1, 7)
-	sliderThumb.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	sliderThumb.Parent = sliderTrack
-	addCorner(sliderThumb, 7)
+    -- Relleno del slider (la parte que se llena según el valor)
+    local sliderFill = Instance.new("Frame")
+    sliderFill.Size = UDim2.new(1, 0, 0, 0)         -- Se actualizará en función del valor
+    sliderFill.Position = UDim2.new(0, 0, 1, 0)
+    sliderFill.AnchorPoint = Vector2.new(0, 1)
+    sliderFill.BackgroundColor3 = main
+    sliderFill.BackgroundTransparency = TransparenciaContenedordelElementos
+    sliderFill.Parent = sliderTrack
+    addCorner(sliderFill, 6)
 
-	local function updateSlider(input)
-		local y = (input.Position.Y - sliderTrack.AbsolutePosition.Y) / sliderTrack.AbsoluteSize.Y
-		y = math.clamp(y, 0, 1)
+    -- Thumb del slider (botón circular que se mueve)
+    local sliderThumb = Instance.new("Frame")
+    sliderThumb.Size = UDim2.new(0, 14, 0, 14)
+    sliderThumb.AnchorPoint = Vector2.new(0.5, 0.5)
+    sliderThumb.Position = UDim2.new(0.5, 0, 1, 0)
+    sliderThumb.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    sliderThumb.Parent = sliderTrack
+    addCorner(sliderThumb, 7)
 
-		local value = minValue + (1 - y) * (maxValue - minValue)
-		value = math.clamp(math.floor(value + 0.5), minValue, maxValue)
+    -- Función para actualizar el slider según la posición del ratón/touch
+    local function updateSlider(input)
+        -- Convertir la posición vertical del input a un valor entre 0 y 1
+        local y = (input.Position.Y - sliderTrack.AbsolutePosition.Y) / sliderTrack.AbsoluteSize.Y
+        y = math.clamp(y, 0, 1)
 
-		local thumbY = 1 - ((value - minValue) / (maxValue - minValue))
-		sliderThumb.Position = UDim2.new(0.5, 0, thumbY, 0)
-		sliderFill.Size = UDim2.new(1, 0, 1 - thumbY, 0)
-		sliderTextBox.Text = tostring(value)
-		callback(value)
-	end
+        -- Calcular el valor: cuando y es 0, obtenemos maxValue; cuando es 1, minValue
+        local value = minValue + (1 - y) * (maxValue - minValue)
+        value = math.clamp(math.floor(value + 0.5), minValue, maxValue)
 
-	sliderTrack.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-			updateSlider(input)
-			local connection
-			connection = input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					connection:Disconnect()
-				else
-					updateSlider(input)
-				end
-			end)
-		end
-	end)
+        local thumbY = 1 - ((value - minValue) / (maxValue - minValue))
+        sliderThumb.Position = UDim2.new(0.5, 0, thumbY, 0)
+        sliderFill.Size = UDim2.new(1, 0, 1 - thumbY, 0)
+        sliderTextBox.Text = tostring(value)
+        sliderLabel.Text = name .. ": " .. tostring(value)
+        callback(value)
+    end
 
-	sliderTextBox.FocusLost:Connect(function()
-		local value = tonumber(sliderTextBox.Text)
-		if value then
-			value = math.clamp(math.floor(value + 0.5), minValue, maxValue)
-			local thumbY = 1 - ((value - minValue) / (maxValue - minValue))
-			sliderThumb.Position = UDim2.new(0.5, 0, thumbY, 0)
-			sliderFill.Size = UDim2.new(1, 0, 1 - thumbY, 0)
-			sliderTextBox.Text = tostring(value)
-			callback(value)
-		else
-			sliderTextBox.Text = tostring(defaultValue)
-		end
-	end)
+    -- Conexión para detectar el input en el track
+    sliderTrack.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            updateSlider(input)
+            local connection
+            connection = input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    connection:Disconnect()
+                else
+                    updateSlider(input)
+                end
+            end)
+        end
+    end)
 
-	local initialValue = math.floor(defaultValue + 0.5)
-	local initialY = 1 - ((initialValue - minValue) / (maxValue - minValue))
-	sliderThumb.Position = UDim2.new(0.5, 0, initialY, 0)
-	sliderFill.Size = UDim2.new(1, 0, 1 - initialY, 0)
-	sliderTextBox.Text = tostring(initialValue)
+    -- Actualizar al cambiar el valor mediante el TextBox
+    sliderTextBox.FocusLost:Connect(function()
+        local value = tonumber(sliderTextBox.Text)
+        if value then
+            value = math.clamp(math.floor(value + 0.5), minValue, maxValue)
+            local thumbY = 1 - ((value - minValue) / (maxValue - minValue))
+            sliderThumb.Position = UDim2.new(0.5, 0, thumbY, 0)
+            sliderFill.Size = UDim2.new(1, 0, 1 - thumbY, 0)
+            sliderTextBox.Text = tostring(value)
+            sliderLabel.Text = name .. ": " .. tostring(value)
+            callback(value)
+        else
+            sliderTextBox.Text = tostring(defaultValue)
+        end
+    end)
+
+    -- Valor inicial
+    local initialValue = math.floor(defaultValue + 0.5)
+    local initialY = 1 - ((initialValue - minValue) / (maxValue - minValue))
+    sliderThumb.Position = UDim2.new(0.5, 0, initialY, 0)
+    sliderFill.Size = UDim2.new(1, 0, 1 - initialY, 0)
+    sliderTextBox.Text = tostring(initialValue)
+    sliderLabel.Text = name .. ": " .. tostring(initialValue)
 end
 
 local TweenService = game:GetService("TweenService")
