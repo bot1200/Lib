@@ -949,7 +949,7 @@ function Library.addSlider(container, name, minValue, maxValue, defaultValue, ca
 
     local sliderTrack = Instance.new("Frame")
     sliderTrack.Size = UDim2.new(0, 120, 0, 6)
-    sliderTrack.Position = UDim2.new(0, 10, 0, 30) -- Justo debajo del TextBox
+    sliderTrack.Position = UDim2.new(0, 10, 0, 30) -- Debajo del TextBox
     sliderTrack.BackgroundColor3 = ColorContenedordelElementos
     sliderTrack.BackgroundTransparency = TransparenciaContenedordelElementos
     sliderTrack.Parent = sliderFrame
@@ -1060,8 +1060,7 @@ function Library.addDropdown(container, labelText, buttonText, options, callback
 
     local dropdownButton = Instance.new("TextButton")
     dropdownButton.Text = buttonText
-    dropdownButton.Size = UDim2.new(0, 140, 0, 30)
-    dropdownButton.Position = UDim2.new(0, 0, 0, 0)
+    dropdownButton.Size = UDim2.new(1, 0, 1, 0)
     dropdownButton.Font = Enum.Font.Gotham
     dropdownButton.TextSize = 13
     dropdownButton.BackgroundTransparency = TransparenciaContenedordelElementos
@@ -1070,13 +1069,23 @@ function Library.addDropdown(container, labelText, buttonText, options, callback
     dropdownButton.Parent = dropdownFrame
     addCorner(dropdownButton, 5)
 
+    local arrow = Instance.new("TextLabel")
+    arrow.Size = UDim2.new(0, 20, 1, 0)
+    arrow.Position = UDim2.new(1, -20, 0, 0)
+    arrow.BackgroundTransparency = 1
+    arrow.Text = "➜"
+    arrow.Font = Enum.Font.Gotham
+    arrow.TextSize = 14
+    arrow.TextColor3 = Color3.fromRGB(255, 255, 255)
+    arrow.Parent = dropdownButton
+
     local dropdownList = Instance.new("Frame")
     dropdownList.Size = UDim2.new(0, 0, 0, 0)
     dropdownList.Position = UDim2.new(0, 0, 0, 0)
     dropdownList.Visible = false
     dropdownList.BackgroundColor3 = ColorContenedordelElementos
     dropdownList.ClipsDescendants = true
-    dropdownList.BackgroundTransparency = TransparenciaContenedordelElementos
+    dropdownList.BackgroundTransparency = 0.15
     dropdownList.Parent = container
     addCorner(dropdownList, 5)
 
@@ -1105,6 +1114,7 @@ function Library.addDropdown(container, labelText, buttonText, options, callback
             tween:Play()  
             tween.Completed:Wait()  
             dropdownList.Visible = false  
+            arrow.Text = "➜"
         else  
             local newSize = updateDropdownSize()  
             dropdownList.Visible = true  
@@ -1114,6 +1124,7 @@ function Library.addDropdown(container, labelText, buttonText, options, callback
             dropdownList.Size = UDim2.new(0, absSize.X, 0, 0)
             local tween = TweenService:Create(dropdownList, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, absSize.X, 0, newSize)})  
             tween:Play()  
+            arrow.Text = "⬇"
         end  
     end)  
 
@@ -1148,6 +1159,7 @@ function Library.addDropdown(container, labelText, buttonText, options, callback
             optionButton.MouseButton1Click:Connect(function()  
                 dropdownButton.Text = option  
                 dropdownList.Visible = false  
+                arrow.Text = "➜"
                 if callback then  
                     callback(option)  
                 end  
