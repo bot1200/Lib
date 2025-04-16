@@ -1051,8 +1051,9 @@ function Library.addDropdown(container, labelText, buttonText, options, callback
     label.Parent = Dropdown
 
     local dropdownFrame = Instance.new("Frame")
-    dropdownFrame.Size = UDim2.new(0, 140, 0, 30)
-    dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
+    dropdownFrame.Size = UDim2.new(0, 120, 0, 30)
+    dropdownFrame.AnchorPoint = Vector2.new(1, 0)
+dropdownFrame.Position = UDim2.new(1, -10, 0, 5)
     dropdownFrame.BackgroundColor3 = ColorContenedordelElementos
     dropdownFrame.Parent = Dropdown
     dropdownFrame.BackgroundTransparency = 1
@@ -1210,7 +1211,8 @@ label.Parent = textboxFrame
 
 local textBox = Instance.new("TextBox")
 textBox.Size = UDim2.new(0, 120, 0, 30)
-textBox.Position = UDim2.new(0, 270, 0, 5)
+textBox.AnchorPoint = Vector2.new(1, 0)
+textBox.Position = UDim2.new(1, -10, 0, 5)
 textBox.Text = defaultText
 textBox.PlaceholderText = placeholderText
 textBox.Font = Enum.Font.Gotham
@@ -1347,7 +1349,7 @@ addCorner(borderFrame, redondoContenedor)
 	KeybindButton.BackgroundColor3 = ColorContenedordelElementos
 	KeybindButton.AnchorPoint = Vector2.new(1, 0)
 KeybindButton.Position = UDim2.new(1, -10, 0, 5)
-	KeybindButton.Size = UDim2.new(0, 140, 0, 30)
+	KeybindButton.Size = UDim2.new(0, 120, 0, 30)
 	KeybindButton.Font = Enum.Font.Gotham
 	KeybindButton.Text = defaultKey.Name
 	KeybindButton.BackgroundTransparency = TransparenciaContenedordelElementos
