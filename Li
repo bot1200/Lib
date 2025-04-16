@@ -950,7 +950,7 @@ function Library.addSlider(container, name, minValue, maxValue, defaultValue, ca
 
     local sliderTrack = Instance.new("Frame")
     sliderTrack.Size = UDim2.new(0, 120, 0, 6)
-    sliderTrack.Position = Position = UDim2.new(1, -10, 0, 30)
+    sliderTrack.Position = UDim2.new(1, -10, 0, 30)
     sliderTrack.AnchorPoint = Vector2.new(1, 0)
     sliderTrack.BackgroundColor3 = ColorContenedordelElementos
     sliderTrack.BackgroundTransparency = TransparenciaContenedordelElementos
