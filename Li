@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("d")
+print("_")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -18,7 +18,7 @@ end
 
 local TweenService = game:GetService("TweenService")
 
-local redondoContenedor = 10
+local redondoContenedor = 6
 local TransparenciaContenedordelElementos = 0.5
 local TamanoContenedor = UDim2.new(1, 0, 0, 45)
 local TransparenciaContenedor = 0.7
@@ -923,33 +923,34 @@ function Library.addSlider(container, name, minValue, maxValue, defaultValue, ca
     addCorner(borderFrame, redondoContenedor)
 
     local sliderLabel = Instance.new("TextLabel")
-    sliderLabel.Size = UDim2.new(1, -70, 0, 15)
+    sliderLabel.Size = UDim2.new(1, -90, 0, 20)
     sliderLabel.Position = UDim2.new(0, 10, 0, 5)
     sliderLabel.Text = name
     sliderLabel.Font = Enum.Font.Gotham
-    sliderLabel.TextSize = 14
+    sliderLabel.TextSize = 15
     sliderLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     sliderLabel.TextXAlignment = Enum.TextXAlignment.Left
     sliderLabel.BackgroundTransparency = 1
     sliderLabel.Parent = sliderFrame
 
     local sliderTextBox = Instance.new("TextBox")
-    sliderTextBox.Size = UDim2.new(0, 50, 0, 15)
-    sliderTextBox.Position = UDim2.new(1, -60, 0, 5)
+    sliderTextBox.Size = UDim2.new(0, 60, 0, 20)
+    sliderTextBox.Position = UDim2.new(1, -70, 0, 5)
     sliderTextBox.Text = tostring(defaultValue)
     sliderTextBox.Font = Enum.Font.Gotham
-    sliderTextBox.TextSize = 14
+    sliderTextBox.TextSize = 18
     sliderTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+    sliderTextBox.TextXAlignment = Enum.TextXAlignment.Center
     sliderTextBox.BackgroundColor3 = ColorContenedordelElementos
     sliderTextBox.BackgroundTransparency = TransparenciaContenedordelElementos
     sliderTextBox.ClearTextOnFocus = false
     sliderTextBox.Parent = sliderFrame
     addCorner(sliderTextBox, 6)
 
-    -- Aquí ajustamos el track para que sea horizontal y más corto
+    -- Slider track horizontal debajo del TextBox
     local sliderTrack = Instance.new("Frame")
     sliderTrack.Size = UDim2.new(0, 120, 0, 6)
-    sliderTrack.Position = UDim2.new(0, 10, 0, 28)
+    sliderTrack.Position = UDim2.new(0, 10, 0, 30)
     sliderTrack.BackgroundColor3 = ColorContenedordelElementos
     sliderTrack.BackgroundTransparency = TransparenciaContenedordelElementos
     sliderTrack.Parent = sliderFrame
