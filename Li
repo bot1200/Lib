@@ -946,9 +946,10 @@ function Library.addSlider(container, name, minValue, maxValue, defaultValue, ca
     sliderTextBox.Parent = sliderFrame
     addCorner(sliderTextBox, 6)
 
+    -- Aquí ajustamos el track para que sea horizontal y más corto
     local sliderTrack = Instance.new("Frame")
-    sliderTrack.Size = UDim2.new(1, -20, 0, 6)
-    sliderTrack.Position = UDim2.new(0, 10, 0, 25)
+    sliderTrack.Size = UDim2.new(0, 120, 0, 6)
+    sliderTrack.Position = UDim2.new(0, 10, 0, 28)
     sliderTrack.BackgroundColor3 = ColorContenedordelElementos
     sliderTrack.BackgroundTransparency = TransparenciaContenedordelElementos
     sliderTrack.Parent = sliderFrame
