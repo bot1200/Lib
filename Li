@@ -922,12 +922,23 @@ function Library.addSlider(container, name, minValue, maxValue, defaultValue, ca
     borderFrame.Parent = sliderFrame
     addCorner(borderFrame, redondoContenedor)
 
+    local sliderLabel = Instance.new("TextLabel")
+    sliderLabel.Size = UDim2.new(1, -70, 0, 15)
+    sliderLabel.Position = UDim2.new(0, 10, 0, 5)
+    sliderLabel.Text = name
+    sliderLabel.Font = Enum.Font.Gotham
+    sliderLabel.TextSize = 14
+    sliderLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    sliderLabel.TextXAlignment = Enum.TextXAlignment.Left
+    sliderLabel.BackgroundTransparency = 1
+    sliderLabel.Parent = sliderFrame
+
     local sliderTextBox = Instance.new("TextBox")
-    sliderTextBox.Size = UDim2.new(0, 50, 0, 20)
+    sliderTextBox.Size = UDim2.new(0, 50, 0, 15)
     sliderTextBox.Position = UDim2.new(1, -60, 0, 5)
     sliderTextBox.Text = tostring(defaultValue)
     sliderTextBox.Font = Enum.Font.Gotham
-    sliderTextBox.TextSize = 15
+    sliderTextBox.TextSize = 14
     sliderTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
     sliderTextBox.BackgroundColor3 = ColorContenedordelElementos
     sliderTextBox.BackgroundTransparency = TransparenciaContenedordelElementos
@@ -937,7 +948,7 @@ function Library.addSlider(container, name, minValue, maxValue, defaultValue, ca
 
     local sliderTrack = Instance.new("Frame")
     sliderTrack.Size = UDim2.new(1, -20, 0, 6)
-    sliderTrack.Position = UDim2.new(0, 10, 0, 35)
+    sliderTrack.Position = UDim2.new(0, 10, 0, 25)
     sliderTrack.BackgroundColor3 = ColorContenedordelElementos
     sliderTrack.BackgroundTransparency = TransparenciaContenedordelElementos
     sliderTrack.Parent = sliderFrame
