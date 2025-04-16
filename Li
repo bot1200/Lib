@@ -947,10 +947,9 @@ function Library.addSlider(container, name, minValue, maxValue, defaultValue, ca
     sliderTextBox.Parent = sliderFrame
     addCorner(sliderTextBox, 6)
 
-    -- Slider track horizontal debajo del TextBox
     local sliderTrack = Instance.new("Frame")
     sliderTrack.Size = UDim2.new(0, 120, 0, 6)
-    sliderTrack.Position = UDim2.new(0, 10, 0, 30)
+    sliderTrack.Position = UDim2.new(0, 10, 0, 30) -- Justo debajo del TextBox
     sliderTrack.BackgroundColor3 = ColorContenedordelElementos
     sliderTrack.BackgroundTransparency = TransparenciaContenedordelElementos
     sliderTrack.Parent = sliderFrame
@@ -1026,19 +1025,20 @@ function Library.addDropdown(container, labelText, buttonText, options, callback
     Dropdown.BackgroundColor3 = FrameContenedor
     Dropdown.Parent = container
     addCorner(Dropdown, redondoContenedor)
-    
-        local borderFrame = Instance.new("Frame")
-borderFrame.Size = UDim2.new(1, 0, 1, 0)
-borderFrame.Position = UDim2.new(0, -2, 0, 0)
-borderFrame.BackgroundTransparency = 1
-borderFrame.ZIndex = Dropdown.ZIndex -1
-borderFrame.Parent = Dropdown
 
-local borderStroke = Instance.new("UIStroke")
-borderStroke.Thickness = 2
-borderStroke.Color = Color3.fromRGB(255, 255, 255)
-borderStroke.Parent = borderFrame
-addCorner(borderFrame, redondoContenedor)
+    local borderFrame = Instance.new("Frame")
+    borderFrame.Size = UDim2.new(1, 0, 1, 0)
+    borderFrame.Position = UDim2.new(0, -2, 0, 0)
+    borderFrame.BackgroundTransparency = 1
+    borderFrame.ZIndex = Dropdown.ZIndex -1
+    borderFrame.Parent = Dropdown
+
+    local borderStroke = Instance.new("UIStroke")
+    borderStroke.Thickness = 2
+    borderStroke.Color = Color3.fromRGB(255, 255, 255)
+    borderStroke.Parent = borderFrame
+    addCorner(borderFrame, redondoContenedor)
+
     local label = Instance.new("TextLabel")
     label.Size = UDim2.new(0.3, 0, 1, 0)
     label.Position = UDim2.new(0, 10, 0, 0)
@@ -1052,7 +1052,7 @@ addCorner(borderFrame, redondoContenedor)
 
     local dropdownFrame = Instance.new("Frame")
     dropdownFrame.Size = UDim2.new(0, 140, 0, 30)
-dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
+    dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
     dropdownFrame.BackgroundColor3 = ColorContenedordelElementos
     dropdownFrame.Parent = Dropdown
     dropdownFrame.BackgroundTransparency = 1
@@ -1071,13 +1071,13 @@ dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
     addCorner(dropdownButton, 5)
 
     local dropdownList = Instance.new("Frame")
-    dropdownList.Size = UDim2.new(1, 0, 0, 0)
-    dropdownList.Position = UDim2.new(0, 0, 1, 5)
+    dropdownList.Size = UDim2.new(0, 0, 0, 0)
+    dropdownList.Position = UDim2.new(0, 0, 0, 0)
     dropdownList.Visible = false
     dropdownList.BackgroundColor3 = ColorContenedordelElementos
     dropdownList.ClipsDescendants = true
     dropdownList.BackgroundTransparency = TransparenciaContenedordelElementos
-    dropdownList.Parent = dropdownFrame
+    dropdownList.Parent = container
     addCorner(dropdownList, 5)
 
     local scrollFrame = Instance.new("ScrollingFrame")
@@ -1101,14 +1101,18 @@ dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
 
     dropdownButton.MouseButton1Click:Connect(function()  
         if dropdownList.Visible then  
-            local tween = TweenService:Create(dropdownList, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(1, 0, 0, 0)})  
+            local tween = TweenService:Create(dropdownList, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 0, 0, 0)})  
             tween:Play()  
             tween.Completed:Wait()  
             dropdownList.Visible = false  
         else  
             local newSize = updateDropdownSize()  
             dropdownList.Visible = true  
-            local tween = TweenService:Create(dropdownList, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(1, 0, 0, newSize)})  
+            local absPos = Dropdown.AbsolutePosition
+            local absSize = Dropdown.AbsoluteSize
+            dropdownList.Position = UDim2.new(0, absPos.X, 0, absPos.Y + absSize.Y + 5)
+            dropdownList.Size = UDim2.new(0, absSize.X, 0, 0)
+            local tween = TweenService:Create(dropdownList, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, absSize.X, 0, newSize)})  
             tween:Play()  
         end  
     end)  
@@ -1148,7 +1152,7 @@ dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
                     callback(option)  
                 end  
             end)  
-        end  
+        end
         updateDropdownSize()
     end
 
