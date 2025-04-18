@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("xd")
+print("_7'(")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -136,8 +136,9 @@ separator.Parent = confirmationFrame
 
 local confi = Instance.new("TextButton")
 confi.Size = UDim2.new(0, 30, 0, 30)
-confi.Position = UDim2.new(1, -35, 0, 5)
-confi.BackgroundTransparency = 1
+confi.Position = UDim2.new(1, -35, 1, 5)
+confi.BackgroundTransparency = 0.5
+confi.BackgroundColor3 = bordecuadro
 confi.Text = "⚙️"
 confi.ZIndex = 20
 confi.TextSize = 16
@@ -147,14 +148,18 @@ confi.Parent = MainFrame
 
 local DestroyGUIButton = Instance.new("TextButton")
 DestroyGUIButton.Size = UDim2.new(0, 20, 0, 30)
-DestroyGUIButton.Position = UDim2.new(1, -60, 0, 5)
-DestroyGUIButton.BackgroundTransparency = 1
+DestroyGUIButton.Position = UDim2.new(1, -60, 1, 5)
+DestroyGUIButton.BackgroundTransparency = 0.5
+DestroyGUIButton.BackgroundColor3 = bordecuadro
 DestroyGUIButton.Text = "X"
 DestroyGUIButton.ZIndex = 20
 DestroyGUIButton.TextSize = 16
-DestroyGUIButton.TextColor3 = Color3.fromRGB(255, 100, 100)
+DestroyGUIButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 DestroyGUIButton.Font = Enum.Font.SourceSans
 DestroyGUIButton.Parent = MainFrame
+
+addCorner(confi, 7)
+addCorner(DestroyGUIButton, 7)
 
 local ConfirmationOverlay = Instance.new("Frame")
 ConfirmationOverlay.Size = UDim2.new(1, 0, 1, 0)
