@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("xddddd")
+print("su puta madre")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -31,26 +31,6 @@ function Library:CreateUI(title, description, allowedUserIds)
     self.allowedUserIds = allowedUserIds or {}
     local ScreenGui = Instance.new("ScreenGui")
     ScreenGui.Parent = mainGui
-
-getgenv().configFileName = "configmenu.txt"
-
-getgenv().saveConfig = function(stateTable)
-    writefile(getgenv().configFileName, game.HttpService:JSONEncode(stateTable))
-end
-
-getgenv().loadConfig = function()
-    if isfile(getgenv().configFileName) then
-        local success, data = pcall(function()
-            return game.HttpService:JSONDecode(readfile(getgenv().configFileName))
-        end)
-        if success and type(data) == "table" then
-            return data
-        end
-    end
-    return {}
-end
-
-getgenv().savedConfig = getgenv().loadConfig()
 
 local Sound = Instance.new("Sound",game:GetService("SoundService"))
  Sound.SoundId = "rbxassetid://9120129807"
@@ -151,16 +131,16 @@ separator.BorderSizePixel = 0
 separator.ZIndex = 20
 separator.Parent = confirmationFrame
 
-local CloseButton = Instance.new("TextButton")
-CloseButton.Size = UDim2.new(0, 30, 0, 30)
-CloseButton.Position = UDim2.new(1, -35, 0, 5)
-CloseButton.BackgroundTransparency = 1
-CloseButton.Text = "⚙️"
-CloseButton.ZIndex = 20
-CloseButton.TextSize = 16
-CloseButton.TextColor3 = Color3.fromRGB(255, 100, 100)
-CloseButton.Font = Enum.Font.SourceSans
-CloseButton.Parent = MainFrame
+local confi = Instance.new("TextButton")
+confi.Size = UDim2.new(0, 30, 0, 30)
+confi.Position = UDim2.new(1, -35, 0, 5)
+confi.BackgroundTransparency = 1
+confi.Text = "⚙️"
+confi.ZIndex = 20
+confi.TextSize = 16
+confi.TextColor3 = Color3.fromRGB(255, 100, 100)
+confi.Font = Enum.Font.SourceSans
+confi.Parent = MainFrame
 
 local XButton = Instance.new("TextButton")
 XButton.Size = UDim2.new(0, 20, 0, 30)
@@ -207,22 +187,14 @@ MinimizeButton.Parent = TopBar
         MinimizeButton.BackgroundColor3 = Color3.fromRGB(255, 200, 0)
     end)
 
-CloseButton.MouseButton1Click:Connect(function()
+confi.MouseButton1Click:Connect(function()
     local sonido = Instance.new("Sound")
     sonido.SoundId = "rbxassetid://17208399163"
     sonido.Volume = 0.5
     sonido.PlayOnRemove = true
-    sonido.Parent = CloseButton
+    sonido.Parent = confi
     sonido:Destroy()
     backgroundOverlay.Visible = not backgroundOverlay.Visible
-end)
-
-CloseButton.MouseEnter:Connect(function()
-    CloseButton.BackgroundTransparency = 0
-end)
-
-CloseButton.MouseLeave:Connect(function()
-    CloseButton.BackgroundTransparency = 1
 end)
 
     local border = Instance.new("UIStroke")
