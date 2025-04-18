@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("s")
+print("f")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -155,17 +155,6 @@ DestroyGUIButton.TextColor3 = Color3.fromRGB(255, 100, 100)
 DestroyGUIButton.Font = Enum.Font.SourceSans
 DestroyGUIButton.Parent = MainFrame
 
-local MinimizeButton = Instance.new("TextButton")
-MinimizeButton.Size = UDim2.new(0, 20, 1, 0)
-MinimizeButton.Position = UDim2.new(1, -85, 0, 5)
-MinimizeButton.BackgroundTransparency = 1
-MinimizeButton.Text = "-"
-MinimizeButton.ZIndex = 19
-MinimizeButton.TextSize = 16
-MinimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-MinimizeButton.Font = Enum.Font.SourceSans
-MinimizeButton.Parent = MainFrame
-
 local ConfirmationOverlay = Instance.new("Frame")
 ConfirmationOverlay.Size = UDim2.new(1, 0, 1, 0)
 ConfirmationOverlay.Position = UDim2.new(0, 0, 0, 0)
@@ -179,7 +168,7 @@ local ConfirmationWindow = Instance.new("Frame")
 ConfirmationWindow.Size = UDim2.new(0, 300, 0, 150)
 ConfirmationWindow.Position = UDim2.new(0.5, -150, 0.5, -75)
 ConfirmationWindow.BackgroundColor3 = FrameContenedor
-ConfirmationWindow.BackgroundTransparency = 0.2
+ConfirmationWindow.BackgroundTransparency = 0.4
 ConfirmationWindow.Parent = ConfirmationOverlay
 ConfirmationWindow.ZIndex = 19
 addCorner(ConfirmationWindow, 7)
@@ -234,25 +223,6 @@ end)
 DestroyGUIButton.MouseLeave:Connect(function()
     DestroyGUIButton.BackgroundTransparency = 1
 end)
-
-    local normalSize = MainFrame.Size
-    local minimizedSize = UDim2.new(normalSize.X.Scale, normalSize.X.Offset, 0, 30)
-    local tweenInfoMinimize = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-
-    MinimizeButton.MouseButton1Click:Connect(function()
-        local isMinimized = MainFrame.Size == minimizedSize
-        local targetSize = isMinimized and normalSize or minimizedSize
-        TweenService:Create(MainFrame, tweenInfoMinimize, { Size = targetSize }):Play()
-        MinimizeButton.Text = isMinimized and "-" or "+"
-    end)
-
-    MinimizeButton.MouseEnter:Connect(function()
-        MinimizeButton.BackgroundColor3 = Color3.fromRGB(255, 220, 50)
-    end)
-
-    MinimizeButton.MouseLeave:Connect(function()
-        MinimizeButton.BackgroundColor3 = Color3.fromRGB(255, 200, 0)
-    end)
 
 confi.MouseButton1Click:Connect(function()
     local sonido = Instance.new("Sound")
@@ -421,12 +391,12 @@ function Tab:AddTab(isallowedUserIds, tabName)
     borderFrame.Size = UDim2.new(1, 0, 1, 0)
     borderFrame.Position = UDim2.new(0, -2, 0, 0)
     borderFrame.BackgroundTransparency = 1
-    borderFrame.ZIndex = tabButton.ZIndex - 1
+    borderFrame.ZIndex = tabButton.ZIndex + 1
     borderFrame.Parent = tabButton
 
     local borderStroke = Instance.new("UIStroke")
     borderStroke.Thickness = 2
-    borderStroke.Color = Color3.fromRGB(255, 255, 255)
+    borderStroke.Color = bordes
     borderStroke.Parent = borderFrame
     addCorner(borderFrame, redondoContenedor)
 addCorner(tabButton, 10)
@@ -562,7 +532,7 @@ function Library.addButton(container, buttonText, descriptionText, callback)
 
     local borderStroke = Instance.new("UIStroke")
     borderStroke.Thickness = 2
-    borderStroke.Color = Color3.fromRGB(255, 255, 255)
+    borderStroke.Color = bordes
     borderStroke.Parent = borderFrame
     addCorner(borderFrame, redondoContenedor)
 
@@ -644,7 +614,7 @@ borderFrame.Parent = ColorPicker
 
 local borderStroke = Instance.new("UIStroke")
 borderStroke.Thickness = 2
-borderStroke.Color = Color3.fromRGB(255, 255, 255)
+borderStroke.Color = bordes
 borderStroke.Parent = borderFrame
 addCorner(borderFrame, redondoContenedor)
 addCorner(ColorPicker, redondoContenedor)
@@ -827,7 +797,7 @@ borderFrame.Parent = toggleFrame
 
 local borderStroke = Instance.new("UIStroke")
 borderStroke.Thickness = 2
-borderStroke.Color = Color3.fromRGB(255, 255, 255)
+borderStroke.Color = bordes
 borderStroke.Parent = borderFrame
 addCorner(borderFrame, redondoContenedor)
 local toggleLabel = Instance.new("TextLabel")
@@ -916,7 +886,7 @@ function Library.addSlider(container, name, descriptionText, minValue, maxValue,
 
     local borderFrame = Instance.new("UIStroke")
     borderFrame.Thickness = 2
-    borderFrame.Color = Color3.fromRGB(255, 255, 255)
+    borderFrame.Color = bordes
     borderFrame.Parent = sliderFrame
     addCorner(borderFrame, redondoContenedor)
 
@@ -1045,7 +1015,7 @@ function Library.addDropdown(container, labelText, buttonText, options, callback
 
     local borderStroke = Instance.new("UIStroke")
     borderStroke.Thickness = 2
-    borderStroke.Color = Color3.fromRGB(255, 255, 255)
+    borderStroke.Color = bordes
     borderStroke.Parent = borderFrame
     addCorner(borderFrame, redondoContenedor)
 
@@ -1203,7 +1173,7 @@ borderFrame.Parent = textboxFrame
 
 local borderStroke = Instance.new("UIStroke")
 borderStroke.Thickness = 2
-borderStroke.Color = Color3.fromRGB(255, 255, 255)
+borderStroke.Color = bordes
 borderStroke.Parent = borderFrame
 addCorner(textboxFrame, redondoContenedor)
 
@@ -1337,7 +1307,7 @@ borderFrame.Parent = KeybindFrame
 
 local borderStroke = Instance.new("UIStroke")
 borderStroke.Thickness = 2
-borderStroke.Color = Color3.fromRGB(255, 255, 255)
+borderStroke.Color = bordes
 borderStroke.Parent = borderFrame
 addCorner(borderFrame, redondoContenedor)
 	local KeybindTitle = Instance.new("TextLabel")
