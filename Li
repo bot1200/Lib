@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("_")
+print("$$$")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -393,24 +393,24 @@ MinimizeButton.Parent = TopBar
     Container.BackgroundTransparency = 1
     addCorner(Container, 5)
 
-    local function isPlayerPremium(player)
-        for _, id in ipairs(self.allowedUserIds) do
-            if player.UserId == id then
-                return true
-            end
+-- Función para comprobar si el jugador local tiene permisos premium
+local function isPlayerPremium(player)
+    for _, id in ipairs(self.allowedUserIds) do
+        if player.UserId == id then
+            return true
         end
-        return false
     end
+    return false
+end
 
-    -- Ejemplo de cómo usar la función isPlayerPremium
-    game.Players.PlayerAdded:Connect(function(player)
-        if isPlayerPremium(player) then
-            print(player.Name .. " tiene acceso premium.")
-            -- Aquí puedes añadir funcionalidades especiales para jugadores premium
-        else
-            print(player.Name .. " no tiene acceso premium.")
-        end
-    end)
+-- Verificación para el jugador local
+local player = game.Players.LocalPlayer
+if isPlayerPremium(player) then
+    print(player.Name .. " tiene acceso premium.")
+    -- Aquí puedes añadir funcionalidades especiales para el jugador premium
+else
+    print(player.Name .. " no tiene acceso premium.")
+end
 
 local Tab = {TabsContainer = TabsContainer, Container = Container}
 
@@ -538,6 +538,7 @@ addCorner(tabButton, 10)
             label.TextColor3 = Color3.fromRGB(243, 156, 18)
             label.Font = Enum.Font.GothamBold
             label.TextSize = 20
+            label.ZIndex = overlay.ZIndex + 1
             label.Parent = overlay
         end
     end
