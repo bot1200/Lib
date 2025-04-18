@@ -257,7 +257,7 @@ end)
 
     button.Name = "Button"
     button.Size = UDim2.new(0, 40, 0, 40)
-    button.Position = UDim2.new(0.5, 0, 0.1, 0)
+    button.Position = UDim2.new(0.14, 0, 0.1, 0)
     button.Text = ""
     button.Font = Enum.Font.Gotham
     button.TextSize = 14
