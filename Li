@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("$$$")
+print("xd")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -52,9 +52,6 @@ end
 
 getgenv().savedConfig = getgenv().loadConfig()
 
-local sizeW = savedConfig.Width or 590
-local sizeH = savedConfig.Height or 300
-
 local Sound = Instance.new("Sound",game:GetService("SoundService"))
  Sound.SoundId = "rbxassetid://9120129807"
  Sound:Play()
@@ -75,7 +72,8 @@ ResizeButton.Size = UDim2.new(0, 20, 0, 20)
 ResizeButton.Position = UDim2.new(1, -20, 1, -20)
 ResizeButton.AnchorPoint = Vector2.new(0, 0)
 ResizeButton.ZIndex = 15
-ResizeButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+ResizeButton.BackgroundTransparency = 0.6
+ResizeButton.BackgroundColor3 = ColorContenedordelElementos
 ResizeButton.Text = ""
 ResizeButton.TextSize = 14
 ResizeButton.Font = Enum.Font.Code
@@ -175,6 +173,17 @@ XButton.TextColor3 = Color3.fromRGB(255, 100, 100)
 XButton.Font = Enum.Font.SourceSans
 XButton.Parent = MainFrame
 
+local MinimizeButton = Instance.new("TextButton")
+MinimizeButton.Size = UDim2.new(0, 20, 1, 0)
+MinimizeButton.Position = UDim2.new(1, -85, 0, 0) 
+MinimizeButton.BackgroundTransparency = 1
+MinimizeButton.Text = "-"
+MinimizeButton.ZIndex = 19
+MinimizeButton.TextSize = 16
+MinimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+MinimizeButton.Font = Enum.Font.SourceSans
+MinimizeButton.Parent = TopBar
+
 XButton.MouseButton1Click:Connect(function()
 	MainFrame:Destroy()
 end)
@@ -197,108 +206,7 @@ end)
 CloseButton.MouseLeave:Connect(function()
     CloseButton.BackgroundTransparency = 1
 end)
-
-local widthLabel = Instance.new("TextLabel")
-widthLabel.Text = "Width"
-widthLabel.Size = UDim2.new(0, 100, 0, 20)
-widthLabel.Position = UDim2.new(0.5, -105, 0, 40)
-widthLabel.BackgroundTransparency = 1
-widthLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-widthLabel.TextSize = 12
-widthLabel.ZIndex = 20
-widthLabel.Parent = confirmationFrame
-
-local heightLabel = Instance.new("TextLabel")
-heightLabel.Text = "Height"
-heightLabel.Size = UDim2.new(0, 100, 0, 20)
-heightLabel.Position = UDim2.new(0.5, 5, 0, 40)
-heightLabel.BackgroundTransparency = 1
-heightLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-heightLabel.TextSize = 12
-heightLabel.ZIndex = 20
-heightLabel.Parent = confirmationFrame
-
-local widthTextBox = Instance.new("TextBox")
-widthTextBox.Size = UDim2.new(0, 100, 0, 30)
-widthTextBox.Position = UDim2.new(0.5, -105, 0, 60)
-widthTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-widthTextBox.BackgroundColor3 = confirmationFrame.BackgroundColor3
-widthTextBox.TextSize = 14
-widthTextBox.ZIndex = 20
-widthTextBox.Parent = confirmationFrame
-widthTextBox.ClearTextOnFocus = false
-addCorner(widthTextBox, 6)
-
-local heightTextBox = Instance.new("TextBox")
-heightTextBox.Size = UDim2.new(0, 100, 0, 30)
-heightTextBox.Position = UDim2.new(0.5, 5, 0, 60)
-heightTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-heightTextBox.BackgroundColor3 = confirmationFrame.BackgroundColor3
-heightTextBox.TextSize = 14
-heightTextBox.ZIndex = 20
-heightTextBox.Parent = confirmationFrame
-heightTextBox.ClearTextOnFocus = false
-addCorner(heightTextBox, 6)
-
-if savedConfig.Width and savedConfig.Height then
-    MainFrame.Size = UDim2.new(0, savedConfig.Width, 0, savedConfig.Height)
-end
-
-widthTextBox.Text = tostring(MainFrame.Size.X.Offset)
-heightTextBox.Text = tostring(MainFrame.Size.Y.Offset)
-
-local applySizeButton = Instance.new("TextButton")
-applySizeButton.Size = UDim2.new(0, 100, 0, 30)
-applySizeButton.Position = UDim2.new(0.5, 5, 0, 100)
-applySizeButton.Text = "Apply Size"
-applySizeButton.TextSize = 13
-applySizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-applySizeButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
-applySizeButton.BackgroundTransparency = 0.4
-applySizeButton.ZIndex = 20
-applySizeButton.Parent = confirmationFrame
-addCorner(applySizeButton, 6)
-
-applySizeButton.MouseButton1Click:Connect(function()
-    local width = tonumber(widthTextBox.Text)
-    local height = tonumber(heightTextBox.Text)
-    if width and height then
-        MainFrame.Size = UDim2.new(0, width, 0, height)
-        saveConfig({ Width = width, Height = height })
-    end
-end)
-
-local resetButton = Instance.new("TextButton")
-resetButton.Size = UDim2.new(0, 100, 0, 30)
-resetButton.Position = UDim2.new(0.5, -105, 0, 100)
-resetButton.Text = "Reset Size"
-resetButton.TextSize = 13
-resetButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-resetButton.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
-resetButton.BackgroundTransparency = 0.4
-resetButton.ZIndex = 20
-resetButton.Parent = confirmationFrame
-addCorner(resetButton, 6)
-
-resetButton.MouseButton1Click:Connect(function()
-    local defaultSize = UDim2.new(0, 590, 0, 300)
-    MainFrame.Size = defaultSize
-    widthTextBox.Text = tostring(defaultSize.X.Offset)
-    heightTextBox.Text = tostring(defaultSize.Y.Offset)
-    saveConfig({ Width = defaultSize.X.Offset, Height = defaultSize.Y.Offset })
-end)
-    
-local MinimizeButton = Instance.new("TextButton")
-MinimizeButton.Size = UDim2.new(0, 20, 1, 0)
-MinimizeButton.Position = UDim2.new(1, -70, 0, 0)  -- Se coloca al lado izquierdo del ⚙️
-MinimizeButton.BackgroundTransparency = 1
-MinimizeButton.Text = "-"
-MinimizeButton.ZIndex = 19
-MinimizeButton.TextSize = 16
-MinimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-MinimizeButton.Font = Enum.Font.SourceSans
-MinimizeButton.Parent = TopBar
-    
+ 
     local normalSize = MainFrame.Size
     local minimizedSize = UDim2.new(normalSize.X.Scale, normalSize.X.Offset, 0, 30)
     local tweenInfoMinimize = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
