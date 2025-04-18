@@ -173,6 +173,10 @@ XButton.TextColor3 = Color3.fromRGB(255, 100, 100)
 XButton.Font = Enum.Font.SourceSans
 XButton.Parent = MainFrame
 
+XButton.MouseButton1Click:Connect(function()
+	MainFrame:Destroy()
+end)
+
 local MinimizeButton = Instance.new("TextButton")
 MinimizeButton.Size = UDim2.new(0, 20, 1, 0)
 MinimizeButton.Position = UDim2.new(1, -85, 0, 0) 
@@ -184,29 +188,6 @@ MinimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 MinimizeButton.Font = Enum.Font.SourceSans
 MinimizeButton.Parent = TopBar
 
-XButton.MouseButton1Click:Connect(function()
-	MainFrame:Destroy()
-end)
-
-CloseButton.MouseButton1Click:Connect(function()
-    local sonido = Instance.new("Sound")
-    sonido.SoundId = "rbxassetid://17208399163"
-    sonido.Volume = 0.5
-    sonido.PlayOnRemove = true
-    sonido.Parent = CloseButton
-    sonido:Destroy()
-
-    backgroundOverlay.Visible = not backgroundOverlay.Visible
-end)
-
-CloseButton.MouseEnter:Connect(function()
-    CloseButton.BackgroundTransparency = 0
-end)
-
-CloseButton.MouseLeave:Connect(function()
-    CloseButton.BackgroundTransparency = 1
-end)
- 
     local normalSize = MainFrame.Size
     local minimizedSize = UDim2.new(normalSize.X.Scale, normalSize.X.Offset, 0, 30)
     local tweenInfoMinimize = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
@@ -225,6 +206,24 @@ end)
     MinimizeButton.MouseLeave:Connect(function()
         MinimizeButton.BackgroundColor3 = Color3.fromRGB(255, 200, 0)
     end)
+
+CloseButton.MouseButton1Click:Connect(function()
+    local sonido = Instance.new("Sound")
+    sonido.SoundId = "rbxassetid://17208399163"
+    sonido.Volume = 0.5
+    sonido.PlayOnRemove = true
+    sonido.Parent = CloseButton
+    sonido:Destroy()
+    backgroundOverlay.Visible = not backgroundOverlay.Visible
+end)
+
+CloseButton.MouseEnter:Connect(function()
+    CloseButton.BackgroundTransparency = 0
+end)
+
+CloseButton.MouseLeave:Connect(function()
+    CloseButton.BackgroundTransparency = 1
+end)
 
     local border = Instance.new("UIStroke")
     border.Parent = MainFrame
