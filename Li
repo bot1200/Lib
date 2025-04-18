@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("f")
+print("a")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -891,7 +891,7 @@ function Library.addSlider(container, name, descriptionText, minValue, maxValue,
 
     local borderFrame = Instance.new("UIStroke")
     borderFrame.Thickness = 2
-    borderFrame.Color = bordes
+    borderFrame.Color = bordecuadro
     borderFrame.Parent = sliderFrame
     addCorner(borderFrame, redondoContenedor)
 
