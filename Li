@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("su puta madre")
+print("s")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -167,7 +167,7 @@ ConfirmationOverlay.Visible = false
 local ConfirmationWindow = Instance.new("Frame")
 ConfirmationWindow.Size = UDim2.new(0, 300, 0, 150)
 ConfirmationWindow.Position = UDim2.new(0.5, -150, 0.5, -75)
-ConfirmationWindow.BackgroundColor3 = Color3.fromRGB(0, 100, 0)
+ConfirmationWindow.BackgroundColor3 = FrameContenedor
 ConfirmationWindow.BackgroundTransparency = 0.2
 ConfirmationWindow.Parent = ConfirmationOverlay
 ConfirmationWindow.ZIndex = 19
@@ -175,7 +175,7 @@ addCorner(ConfirmationWindow, 7)
 
 local ConfirmationText = Instance.new("TextLabel")
 ConfirmationText.Text = "Are you sure you want to Destroy the GUI?"
-ConfirmationText.TextSize = 15
+ConfirmationText.TextSize = 10
 ConfirmationText.TextColor3 = Color3.fromRGB(255, 255, 255)
 ConfirmationText.BackgroundTransparency = 1
 ConfirmationText.Size = UDim2.new(1, 0, 0, 50)
