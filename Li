@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("+")
+print("hshshshshshshshhhshdhshsbehbshs")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -140,7 +140,7 @@ DestroyGUIButton.Position = UDim2.new(1, -70, 0, 0)
 DestroyGUIButton.BackgroundTransparency = 0.5
 DestroyGUIButton.BackgroundColor3 = bordecuadro
 DestroyGUIButton.Text = "X"
-DestroyGUIButton.ZIndex = 20
+DestroyGUIButton.ZIndex = 30
 DestroyGUIButton.TextSize = 23
 DestroyGUIButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 DestroyGUIButton.Font = Enum.Font.SourceSans
@@ -152,7 +152,7 @@ confi.Position = UDim2.new(1, -35, 0, 0)
 confi.BackgroundTransparency = 0.5
 confi.BackgroundColor3 = bordecuadro
 confi.Text = "⚙️"
-confi.ZIndex = 20
+confi.ZIndex = 30
 confi.TextSize = 16
 confi.TextColor3 = Color3.fromRGB(255, 100, 100)
 confi.Font = Enum.Font.SourceSans
