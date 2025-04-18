@@ -155,10 +155,6 @@ DestroyGUIButton.TextColor3 = Color3.fromRGB(255, 100, 100)
 DestroyGUIButton.Font = Enum.Font.SourceSans
 DestroyGUIButton.Parent = MainFrame
 
-DestroyGUIButton.MouseButton1Click:Connect(function()
-    ConfirmationOverlay.Visible = true
-end)
-
 local ConfirmationOverlay = Instance.new("Frame")
 ConfirmationOverlay.Size = UDim2.new(1, 0, 1, 0)
 ConfirmationOverlay.Position = UDim2.new(0, 0, 0, 0)
@@ -208,16 +204,9 @@ CancelDestroyButton.Position = UDim2.new(0.5, 5, 1, -45)
 CancelDestroyButton.Parent = ConfirmationWindow
 addCorner(CancelDestroyButton, 4)
 
-local ExitHoverButton = Instance.new("TextButton")
-ExitHoverButton.Size = UDim2.new(0, 20, 0, 20)
-ExitHoverButton.Position = UDim2.new(1, -25, 0, 5)
-ExitHoverButton.BackgroundTransparency = 1
-ExitHoverButton.Text = "X"
-ExitHoverButton.ZIndex = 20
-ExitHoverButton.TextSize = 16
-ExitHoverButton.TextColor3 = Color3.fromRGB(255, 100, 100)
-ExitHoverButton.Font = Enum.Font.SourceSans
-ExitHoverButton.Parent = MainFrame
+DestroyGUIButton.MouseButton1Click:Connect(function()
+    ConfirmationOverlay.Visible = true
+end)
 
 ConfirmDestroyButton.MouseButton1Click:Connect(function()
     MainFrame:Destroy()
@@ -227,12 +216,12 @@ CancelDestroyButton.MouseButton1Click:Connect(function()
     ConfirmationOverlay.Visible = false
 end)
 
-ExitHoverButton.MouseEnter:Connect(function()
-    ExitHoverButton.BackgroundTransparency = 0
+DestroyGUIButton.MouseEnter:Connect(function()
+    DestroyGUIButton.BackgroundTransparency = 0
 end)
 
-ExitHoverButton.MouseLeave:Connect(function()
-    ExitHoverButton.BackgroundTransparency = 1
+DestroyGUIButton.MouseLeave:Connect(function()
+    DestroyGUIButton.BackgroundTransparency = 1
 end)
 
 local MinimizeButton = Instance.new("TextButton")
