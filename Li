@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("xd")
+print("sjvgsss")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -262,30 +262,36 @@ end)
     button.BackgroundColor3 = bordes
     button.Parent = screenGui
     
-    UICorner.CornerRadius = UDim.new(0, 10)
-    UICorner.Parent = button
+    local borderFrame = Instance.new("Frame")
+    borderFrame.Size = UDim2.new(1, 0, 1, 0)
+    borderFrame.Position = UDim2.new(0, 0, 0, 0)
+    borderFrame.BackgroundTransparency = 1
+    borderFrame.ZIndex = button.ZIndex + 1
+    borderFrame.Parent = button
 
+    local borderStroke = Instance.new("UIStroke")
+    borderStroke.Thickness = 2
+    borderStroke.Color = bordecuadro
+    borderStroke.Parent = borderFrame
+    addCorner(borderFrame, redondoContenedor)
+    addCorner(tabButton, 10)
+ UICorner.CornerRadius = UDim.new(0, 10)
+    UICorner.Parent = button
     clickSound.SoundId = "rbxassetid://10066968815"
     clickSound.Parent = button
-
     local isActive = true
-
     local function toggleButton()
         isActive = not isActive
         MainFrame.Visible = isActive
         clickSound:Play()
-
         button:TweenSize(UDim2.new(0, 65, 0, 55), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
         task.wait(0.2)
         button:TweenSize(UDim2.new(0, 40, 0, 40), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
-
         button.BackgroundTransparency = 0.3
         task.wait(2)
         button.BackgroundTransparency = 0.8
     end
-
     button.MouseButton1Click:Connect(toggleButton)
-
     local TopBar = Instance.new("Frame")
     TopBar.Size = UDim2.new(1, 0, 0, 30)
     TopBar.BackgroundColor3 = bordes
@@ -353,8 +359,8 @@ padding.Parent = TabsContainer
     end)
 
     local Container = Instance.new("Frame")
-    Container.Size = UDim2.new(0.7, 0, 1, -33)
-    Container.Position = UDim2.new(0.3, 0, 0, 30)
+    Container.Size = UDim2.new(0.7, 0, 1, -30)
+    Container.Position = UDim2.new(0.1, 0, 0, 30)
     Container.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
     Container.BorderSizePixel = 0
     Container.Parent = MainFrame
@@ -370,11 +376,9 @@ local function isPlayerPremium(player)
     return false
 end
 
--- Verificación para el jugador local
 local player = game.Players.LocalPlayer
 if isPlayerPremium(player) then
     print(player.Name .. " tiene acceso premium.")
-    -- Aquí puedes añadir funcionalidades especiales para el jugador premium
 else
     print(player.Name .. " no tiene acceso premium.")
 end
