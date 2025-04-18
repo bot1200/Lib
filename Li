@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("susjsjsj")
+print("xd")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -344,8 +344,8 @@ end)
     TabsListLayout.Parent = TabsContainer
     
     local padding = Instance.new("UIPadding")
-padding.PaddingLeft = UDim.new(0, 7)
-padding.PaddingRight = UDim.new(0, 7)
+padding.PaddingLeft = UDim.new(0, 5)
+padding.PaddingRight = UDim.new(0, 5)
 padding.Parent = TabsContainer
 
     TabsListLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
@@ -394,7 +394,7 @@ function Tab:AddTab(isallowedUserIds, tabName)
 
     local borderFrame = Instance.new("Frame")
     borderFrame.Size = UDim2.new(1, 0, 1, 0)
-    borderFrame.Position = UDim2.new(0, -2, 0, 0)
+    borderFrame.Position = UDim2.new(0, 0, 0, 0)
     borderFrame.BackgroundTransparency = 1
     borderFrame.ZIndex = tabButton.ZIndex + 1
     borderFrame.Parent = tabButton
@@ -432,8 +432,8 @@ addCorner(tabButton, 10)
     buttonLayout.Parent = frameScroll
     
     local padding = Instance.new("UIPadding")
-padding.PaddingLeft = UDim.new(0, 7)
-padding.PaddingRight = UDim.new(0, 7)
+padding.PaddingLeft = UDim.new(0, 5)
+padding.PaddingRight = UDim.new(0, 5)
 padding.Parent = frameScroll
 
     buttonLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
@@ -535,7 +535,7 @@ function Library.addButton(container, buttonText, descriptionText, callback)
 
     local borderFrame = Instance.new("Frame")
     borderFrame.Size = UDim2.new(1, 0, 1, 0)
-    borderFrame.Position = UDim2.new(0, -2, 0, 0)
+    borderFrame.Position = UDim2.new(0, 0, 0, 0)
     borderFrame.BackgroundTransparency = 1
     borderFrame.ZIndex = button.ZIndex + 1
     borderFrame.Parent = button
@@ -617,7 +617,7 @@ ColorPicker.BackgroundTransparency = TransparenciaContenedor
 
     local borderFrame = Instance.new("Frame")
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
-borderFrame.Position = UDim2.new(0, -2, 0, 0)
+borderFrame.Position = UDim2.new(0, 0, 0, 0)
 borderFrame.BackgroundTransparency = 1
 borderFrame.ZIndex = ColorPicker.ZIndex + 1
 borderFrame.Parent = ColorPicker
@@ -800,7 +800,7 @@ addCorner(toggleFrame, redondoContenedor)
 
     local borderFrame = Instance.new("Frame")
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
-borderFrame.Position = UDim2.new(0, -2, 0, 0)
+borderFrame.Position = UDim2.new(0, 0, 0, 0)
 borderFrame.BackgroundTransparency = 1
 borderFrame.ZIndex = toggleFrame.ZIndex -1
 borderFrame.Parent = toggleFrame
@@ -1018,7 +1018,7 @@ function Library.addDropdown(container, labelText, buttonText, options, callback
 
     local borderFrame = Instance.new("Frame")
     borderFrame.Size = UDim2.new(1, 0, 1, 0)
-    borderFrame.Position = UDim2.new(0, -2, 0, 0)
+    borderFrame.Position = UDim2.new(0, 0, 0, 0)
     borderFrame.BackgroundTransparency = 1
     borderFrame.ZIndex = Dropdown.ZIndex -1
     borderFrame.Parent = Dropdown
@@ -1176,7 +1176,7 @@ textboxFrame.Parent = container
 
     local borderFrame = Instance.new("Frame")
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
-borderFrame.Position = UDim2.new(0, -2, 0, 0)
+borderFrame.Position = UDim2.new(0, 0, 0, 0)
 borderFrame.BackgroundTransparency = 1
 borderFrame.ZIndex = textboxFrame.ZIndex -1
 borderFrame.Parent = textboxFrame
@@ -1310,7 +1310,7 @@ function Library.AddKeybind(container, text, defaultKey, callback)
 
     local borderFrame = Instance.new("Frame")
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
-borderFrame.Position = UDim2.new(0, -2, 0, 0)
+borderFrame.Position = UDim2.new(0, 0, 0, 0)
 borderFrame.BackgroundTransparency = 1
 borderFrame.ZIndex = KeybindFrame.ZIndex -1
 borderFrame.Parent = KeybindFrame
