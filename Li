@@ -70,6 +70,53 @@ MainFrame.Draggable = true
 MainFrame.BackgroundTransparency = 0.8
 addCorner(MainFrame, 7)
 
+local ResizeButton = Instance.new("TextButton", MainFrame)
+ResizeButton.Size = UDim2.new(0, 20, 0, 20)
+ResizeButton.Position = UDim2.new(1, -20, 1, -20)
+ResizeButton.AnchorPoint = Vector2.new(0, 0)
+ResizeButton.ZIndex = 15
+ResizeButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+ResizeButton.Text = ""
+ResizeButton.TextSize = 14
+ResizeButton.Font = Enum.Font.Code
+ResizeButton.TextColor3 = Color3.fromRGB(200, 200, 200)
+ResizeButton.BorderSizePixel = 0
+ResizeButton.AutoButtonColor = false
+
+local dragging = false
+local startPos
+local startSize
+
+local UserInputService = game:GetService("UserInputService")
+
+local function beginDrag(input)
+	dragging = true
+	startPos = input.Position
+	startSize = MainFrame.Size
+
+	input.Changed:Connect(function()
+		if input.UserInputState == Enum.UserInputState.End then
+			dragging = false
+		end
+	end)
+end
+
+ResizeButton.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		beginDrag(input)
+	end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+	if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+		local delta = input.Position - startPos
+		MainFrame.Size = UDim2.new(
+			startSize.X.Scale, math.max(100, startSize.X.Offset + delta.X),
+			startSize.Y.Scale, math.max(100, startSize.Y.Offset + delta.Y)
+		)
+	end
+end)
+
 local backgroundOverlay = Instance.new("Frame")
 backgroundOverlay.Size = UDim2.new(1, 0, 1, 0)
 backgroundOverlay.Position = UDim2.new(0, 0, 0, 0)
@@ -200,22 +247,6 @@ end
 widthTextBox.Text = tostring(MainFrame.Size.X.Offset)
 heightTextBox.Text = tostring(MainFrame.Size.Y.Offset)
 
-local deleteButton = Instance.new("TextButton")
-deleteButton.Text = "X"
-deleteButton.ZIndex = 20
-deleteButton.TextSize = 13
-deleteButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-deleteButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
-deleteButton.BackgroundTransparency = 0.4
-deleteButton.Size = UDim2.new(0, 100, 0, 30)
-deleteButton.Position = UDim2.new(0.5, -105, 0, 100)
-deleteButton.Parent = confirmationFrame
-addCorner(deleteButton, 6)
-
-deleteButton.MouseButton1Click:Connect(function()
-    
-end)
-
 local applySizeButton = Instance.new("TextButton")
 applySizeButton.Size = UDim2.new(0, 100, 0, 30)
 applySizeButton.Position = UDim2.new(0.5, 5, 0, 100)
@@ -239,7 +270,7 @@ end)
 
 local resetButton = Instance.new("TextButton")
 resetButton.Size = UDim2.new(0, 100, 0, 30)
-resetButton.Position = UDim2.new(0.5, 115, 0, 100)
+resetButton.Position = UDim2.new(0.5, -105, 0, 100)
 resetButton.Text = "Reset Size"
 resetButton.TextSize = 13
 resetButton.TextColor3 = Color3.fromRGB(255, 255, 255)
