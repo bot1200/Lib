@@ -356,7 +356,6 @@ end)
     Container.BackgroundTransparency = 1
     addCorner(Container, 5)
 
--- Función para comprobar si el jugador local tiene permisos premium
 local function isPlayerPremium(player)
     for _, id in ipairs(self.allowedUserIds) do
         if player.UserId == id then
@@ -401,6 +400,11 @@ function Tab:AddTab(isallowedUserIds, tabName)
     borderStroke.Parent = borderFrame
     addCorner(borderFrame, redondoContenedor)
 addCorner(tabButton, 10)
+
+local padding = Instance.new("UIPadding")
+padding.PaddingLeft = UDim.new(0, 5)
+padding.PaddingRight = UDim.new(0, 5)
+padding.Parent = frameScroll
 
     local tabFrame = Instance.new("Frame")
     tabFrame.Size = UDim2.new(1, 0, 1, -15)
