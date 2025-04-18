@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("su puta madre")
+print("su puta ")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -37,7 +37,7 @@ local Sound = Instance.new("Sound",game:GetService("SoundService"))
  Sound:Play()
  
 local MainFrame = Instance.new("Frame")
-MainFrame.Size = UDim2.new(0, sizeW, 0, sizeH)
+MainFrame.Size = UDim2.new(0, 590, 0, 300)
 MainFrame.Position = UDim2.new(0.5, -sizeW / 2, 0.5, -sizeH / 2 - 30)
 MainFrame.BackgroundColor3 = Color3.fromRGB(138, 43, 226)
 MainFrame.BorderSizePixel = 0
