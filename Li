@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("sjvgsss")
+print("xd")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -274,8 +274,7 @@ end)
     borderStroke.Color = bordecuadro
     borderStroke.Parent = borderFrame
     addCorner(borderFrame, redondoContenedor)
-    addCorner(tabButton, 10)
- UICorner.CornerRadius = UDim.new(0, 10)
+ UICorner.CornerRadius = UDim.new(0, 8)
     UICorner.Parent = button
     clickSound.SoundId = "rbxassetid://10066968815"
     clickSound.Parent = button
@@ -291,7 +290,7 @@ end)
         task.wait(2)
         button.BackgroundTransparency = 0.8
     end
-    button.MouseButton1Click:Connect(toggleButton)
+    button.MouseButton1Click:Connect(toggleButton)    
     local TopBar = Instance.new("Frame")
     TopBar.Size = UDim2.new(1, 0, 0, 30)
     TopBar.BackgroundColor3 = bordes
@@ -361,7 +360,7 @@ padding.Parent = TabsContainer
     local Container = Instance.new("Frame")
     Container.Size = UDim2.new(0.7, 0, 1, -30)
     Container.Position = UDim2.new(0.1, 0, 0, 30)
-    Container.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+    Container.BackgroundColor3 = Color3.fromRGB(0.1, 140, 0)
     Container.BorderSizePixel = 0
     Container.Parent = MainFrame
     Container.BackgroundTransparency = 1
