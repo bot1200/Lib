@@ -117,6 +117,21 @@ CloseButton.TextColor3 = Color3.fromRGB(255, 100, 100)
 CloseButton.Font = Enum.Font.SourceSans
 CloseButton.Parent = MainFrame
 
+local XButton = Instance.new("TextButton")
+XButton.Size = UDim2.new(0, 20, 0, 30)
+XButton.Position = UDim2.new(1, -60, 0, 5)
+XButton.BackgroundTransparency = 1
+XButton.Text = "X"
+XButton.ZIndex = 20
+XButton.TextSize = 16
+XButton.TextColor3 = Color3.fromRGB(255, 100, 100)
+XButton.Font = Enum.Font.SourceSans
+XButton.Parent = MainFrame
+
+XButton.MouseButton1Click:Connect(function()
+	MainFrame:Destroy()
+end)
+
 CloseButton.MouseButton1Click:Connect(function()
     local sonido = Instance.new("Sound")
     sonido.SoundId = "rbxassetid://17208399163"
@@ -198,7 +213,7 @@ deleteButton.Parent = confirmationFrame
 addCorner(deleteButton, 6)
 
 deleteButton.MouseButton1Click:Connect(function()
-    MainFrame:Destroy()
+    
 end)
 
 local applySizeButton = Instance.new("TextButton")
