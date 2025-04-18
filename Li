@@ -135,20 +135,20 @@ separator.ZIndex = 20
 separator.Parent = confirmationFrame
 
 local DestroyGUIButton = Instance.new("TextButton")
-DestroyGUIButton.Size = UDim2.new(0, 30, 0, 30)
-DestroyGUIButton.Position = UDim2.new(1, -70, 0, 5)
+DestroyGUIButton.Size = UDim2.new(0, 26, 0, 27)
+DestroyGUIButton.Position = UDim2.new(1, -70, 0, 0)
 DestroyGUIButton.BackgroundTransparency = 0.5
 DestroyGUIButton.BackgroundColor3 = bordecuadro
 DestroyGUIButton.Text = "X"
 DestroyGUIButton.ZIndex = 20
-DestroyGUIButton.TextSize = 18
+DestroyGUIButton.TextSize = 23
 DestroyGUIButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 DestroyGUIButton.Font = Enum.Font.SourceSans
-DestroyGUIButton.Parent = MainFrame
+DestroyGUIButton.Parent = TopBar
 
 local confi = Instance.new("TextButton")
-confi.Size = UDim2.new(0, 30, 0, 30)
-confi.Position = UDim2.new(1, -35, 0, 5)
+confi.Size = UDim2.new(0, 26, 0, 27)
+confi.Position = UDim2.new(1, -35, 0, 0)
 confi.BackgroundTransparency = 0.5
 confi.BackgroundColor3 = bordecuadro
 confi.Text = "⚙️"
@@ -156,7 +156,7 @@ confi.ZIndex = 20
 confi.TextSize = 16
 confi.TextColor3 = Color3.fromRGB(255, 100, 100)
 confi.Font = Enum.Font.SourceSans
-confi.Parent = MainFrame
+confi.Parent = TopBar
 
 addCorner(confi, 7)
 addCorner(DestroyGUIButton, 7)
@@ -354,8 +354,8 @@ end)
     TabsListLayout.Parent = TabsContainer
     
     local padding = Instance.new("UIPadding")
-padding.PaddingLeft = UDim.new(0, 5)
-padding.PaddingRight = UDim.new(0, 5)
+padding.PaddingLeft = UDim.new(0, 4)
+padding.PaddingRight = UDim.new(0, 4)
 padding.Parent = TabsContainer
 
     TabsListLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
@@ -440,8 +440,8 @@ addCorner(tabButton, 10)
     buttonLayout.Parent = frameScroll
     
     local padding = Instance.new("UIPadding")
-padding.PaddingLeft = UDim.new(0, 5)
-padding.PaddingRight = UDim.new(0, 5)
+padding.PaddingLeft = UDim.new(0, 4)
+padding.PaddingRight = UDim.new(0, 4)
 padding.Parent = frameScroll
 
     buttonLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
