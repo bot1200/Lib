@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("hshshshshshshshhhshdhshsbehbshs")
+print("h")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -49,6 +49,15 @@ MainFrame.Active = true
 MainFrame.Draggable = true
 MainFrame.BackgroundTransparency = 0.8
 addCorner(MainFrame, 7)
+
+    local TopBar = Instance.new("Frame")
+    TopBar.Size = UDim2.new(1, 0, 0, 30)
+    TopBar.BackgroundColor3 = bordes
+    TopBar.BorderSizePixel = 0
+    TopBar.BackgroundTransparency = 0.5
+    TopBar.ZIndex = 10
+    TopBar.Parent = MainFrame
+    addCorner(TopBar, 5)
 
 local ResizeButton = Instance.new("TextButton", MainFrame)
 ResizeButton.Size = UDim2.new(0, 20, 0, 20)
@@ -296,14 +305,6 @@ end)
         button.BackgroundTransparency = 0.8
     end
     button.MouseButton1Click:Connect(toggleButton)    
-    local TopBar = Instance.new("Frame")
-    TopBar.Size = UDim2.new(1, 0, 0, 30)
-    TopBar.BackgroundColor3 = bordes
-    TopBar.BorderSizePixel = 0
-    TopBar.BackgroundTransparency = 0.5
-    TopBar.ZIndex = 10
-    TopBar.Parent = MainFrame
-    addCorner(TopBar, 5)
 
     local Line = Instance.new("Frame")
     Line.Size = UDim2.new(1, 0, 0, 2)
@@ -338,8 +339,8 @@ end)
     DescriptionLabel.Parent = TopBar
 
     local TabsContainer = Instance.new("ScrollingFrame")
-    TabsContainer.Size = UDim2.new(0.3, 0, 1, -30)
-    TabsContainer.Position = UDim2.new(0, 0, 0, 30)
+    TabsContainer.Size = UDim2.new(0.3, 0, 1, -33)
+    TabsContainer.Position = UDim2.new(0, 0, 0, 33)
     TabsContainer.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
     TabsContainer.BorderSizePixel = 0
     TabsContainer.CanvasSize = UDim2.new(0, 0, 0, 0)
