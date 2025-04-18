@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("su puta ")
+print("su puta madre")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -27,6 +27,8 @@ local bordes = Color3.fromRGB(138, 43, 250)
 local main = Color3.fromRGB(138, 43, 226)
 local ColorContenedordelElementos = Color3.fromRGB(75, 0, 130)
 
+local sizeW, sizeH = 590, 300
+
 function Library:CreateUI(title, description, allowedUserIds)
     self.allowedUserIds = allowedUserIds or {}
     local ScreenGui = Instance.new("ScreenGui")
@@ -37,7 +39,7 @@ local Sound = Instance.new("Sound",game:GetService("SoundService"))
  Sound:Play()
  
 local MainFrame = Instance.new("Frame")
-MainFrame.Size = UDim2.new(0, 590, 0, 300)
+MainFrame.Size = UDim2.new(0, sizeW, 0, sizeH)
 MainFrame.Position = UDim2.new(0.5, -sizeW / 2, 0.5, -sizeH / 2 - 30)
 MainFrame.BackgroundColor3 = Color3.fromRGB(138, 43, 226)
 MainFrame.BorderSizePixel = 0
