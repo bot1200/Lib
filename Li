@@ -167,8 +167,8 @@ confi.TextColor3 = Color3.fromRGB(255, 100, 100)
 confi.Font = Enum.Font.SourceSans
 confi.Parent = TopBar
 
-addCorner(confi, 7)
-addCorner(DestroyGUIButton, 7)
+addCorner(confi, 6)
+addCorner(DestroyGUIButton, 6)
 
 local ConfirmationOverlay = Instance.new("Frame")
 ConfirmationOverlay.Size = UDim2.new(1, 0, 1, 0)
@@ -231,14 +231,6 @@ CancelDestroyButton.MouseButton1Click:Connect(function()
     ConfirmationOverlay.Visible = false
 end)
 
-DestroyGUIButton.MouseEnter:Connect(function()
-    DestroyGUIButton.BackgroundTransparency = 0
-end)
-
-DestroyGUIButton.MouseLeave:Connect(function()
-    DestroyGUIButton.BackgroundTransparency = 1
-end)
-
 confi.MouseButton1Click:Connect(function()
     local sonido = Instance.new("Sound")
     sonido.SoundId = "rbxassetid://17208399163"
@@ -265,7 +257,7 @@ end)
 
     button.Name = "Button"
     button.Size = UDim2.new(0, 40, 0, 40)
-    button.Position = UDim2.new(0.12, 0, 0.1, 0)
+    button.Position = UDim2.new(0.5, 0, 0.1, 0)
     button.Text = ""
     button.Font = Enum.Font.Gotham
     button.TextSize = 14
