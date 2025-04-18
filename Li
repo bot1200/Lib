@@ -144,19 +144,95 @@ confi.TextColor3 = Color3.fromRGB(255, 100, 100)
 confi.Font = Enum.Font.SourceSans
 confi.Parent = MainFrame
 
-local XButton = Instance.new("TextButton")
-XButton.Size = UDim2.new(0, 20, 0, 30)
-XButton.Position = UDim2.new(1, -60, 0, 5)
-XButton.BackgroundTransparency = 1
-XButton.Text = "X"
-XButton.ZIndex = 20
-XButton.TextSize = 16
-XButton.TextColor3 = Color3.fromRGB(255, 100, 100)
-XButton.Font = Enum.Font.SourceSans
-XButton.Parent = MainFrame
+local DestroyGUIButton = Instance.new("TextButton")
+DestroyGUIButton.Size = UDim2.new(0, 20, 0, 30)
+DestroyGUIButton.Position = UDim2.new(1, -60, 0, 5)
+DestroyGUIButton.BackgroundTransparency = 1
+DestroyGUIButton.Text = "X"
+DestroyGUIButton.ZIndex = 20
+DestroyGUIButton.TextSize = 16
+DestroyGUIButton.TextColor3 = Color3.fromRGB(255, 100, 100)
+DestroyGUIButton.Font = Enum.Font.SourceSans
+DestroyGUIButton.Parent = MainFrame
 
-XButton.MouseButton1Click:Connect(function()
-	MainFrame:Destroy()
+DestroyGUIButton.MouseButton1Click:Connect(function()
+    ConfirmationOverlay.Visible = true
+end)
+
+local ConfirmationOverlay = Instance.new("Frame")
+ConfirmationOverlay.Size = UDim2.new(1, 0, 1, 0)
+ConfirmationOverlay.Position = UDim2.new(0, 0, 0, 0)
+ConfirmationOverlay.ZIndex = 18
+ConfirmationOverlay.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+ConfirmationOverlay.BackgroundTransparency = 0.4
+ConfirmationOverlay.Parent = MainFrame
+ConfirmationOverlay.Visible = false
+
+local ConfirmationWindow = Instance.new("Frame")
+ConfirmationWindow.Size = UDim2.new(0, 300, 0, 150)
+ConfirmationWindow.Position = UDim2.new(0.5, -150, 0.5, -75)
+ConfirmationWindow.BackgroundColor3 = Color3.fromRGB(0, 100, 0)
+ConfirmationWindow.BackgroundTransparency = 0.2
+ConfirmationWindow.Parent = ConfirmationOverlay
+ConfirmationWindow.ZIndex = 19
+addCorner(ConfirmationWindow, 7)
+
+local ConfirmationText = Instance.new("TextLabel")
+ConfirmationText.Text = "Are you sure you want to Destroy the GUI?"
+ConfirmationText.TextSize = 15
+ConfirmationText.TextColor3 = Color3.fromRGB(255, 255, 255)
+ConfirmationText.BackgroundTransparency = 1
+ConfirmationText.Size = UDim2.new(1, 0, 0, 50)
+ConfirmationText.ZIndex = 20
+ConfirmationText.Parent = ConfirmationWindow
+
+local ConfirmDestroyButton = Instance.new("TextButton")
+ConfirmDestroyButton.Text = "Yeah"
+ConfirmDestroyButton.ZIndex = 20
+ConfirmDestroyButton.TextSize = 16
+ConfirmDestroyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ConfirmDestroyButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+ConfirmDestroyButton.Size = UDim2.new(0.5, -10, 0, 40)
+ConfirmDestroyButton.Position = UDim2.new(0, 5, 1, -45)
+ConfirmDestroyButton.Parent = ConfirmationWindow
+addCorner(ConfirmDestroyButton, 4)
+
+local CancelDestroyButton = Instance.new("TextButton")
+CancelDestroyButton.Text = "No"
+CancelDestroyButton.TextSize = 16
+CancelDestroyButton.ZIndex = 20
+CancelDestroyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CancelDestroyButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+CancelDestroyButton.Size = UDim2.new(0.5, -10, 0, 40)
+CancelDestroyButton.Position = UDim2.new(0.5, 5, 1, -45)
+CancelDestroyButton.Parent = ConfirmationWindow
+addCorner(CancelDestroyButton, 4)
+
+local ExitHoverButton = Instance.new("TextButton")
+ExitHoverButton.Size = UDim2.new(0, 20, 0, 20)
+ExitHoverButton.Position = UDim2.new(1, -25, 0, 5)
+ExitHoverButton.BackgroundTransparency = 1
+ExitHoverButton.Text = "X"
+ExitHoverButton.ZIndex = 20
+ExitHoverButton.TextSize = 16
+ExitHoverButton.TextColor3 = Color3.fromRGB(255, 100, 100)
+ExitHoverButton.Font = Enum.Font.SourceSans
+ExitHoverButton.Parent = MainFrame
+
+ConfirmDestroyButton.MouseButton1Click:Connect(function()
+    MainFrame:Destroy()
+end)
+
+CancelDestroyButton.MouseButton1Click:Connect(function()
+    ConfirmationOverlay.Visible = false
+end)
+
+ExitHoverButton.MouseEnter:Connect(function()
+    ExitHoverButton.BackgroundTransparency = 0
+end)
+
+ExitHoverButton.MouseLeave:Connect(function()
+    ExitHoverButton.BackgroundTransparency = 1
 end)
 
 local MinimizeButton = Instance.new("TextButton")
@@ -168,7 +244,7 @@ MinimizeButton.ZIndex = 19
 MinimizeButton.TextSize = 16
 MinimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 MinimizeButton.Font = Enum.Font.SourceSans
-MinimizeButton.Parent = TopBar
+MinimizeButton.Parent = MainFrame
 
     local normalSize = MainFrame.Size
     local minimizedSize = UDim2.new(normalSize.X.Scale, normalSize.X.Offset, 0, 30)
