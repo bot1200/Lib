@@ -393,7 +393,7 @@ MinimizeButton.Parent = TopBar
     Container.BackgroundTransparency = 1
     addCorner(Container, 5)
 
-local function isPlayerPremium(player)
+    local function isPlayerPremium(player)
         for _, id in ipairs(self.allowedUserIds) do
             if player.UserId == id then
                 return true
@@ -401,6 +401,16 @@ local function isPlayerPremium(player)
         end
         return false
     end
+
+    -- Ejemplo de cómo usar la función isPlayerPremium
+    game.Players.PlayerAdded:Connect(function(player)
+        if isPlayerPremium(player) then
+            print(player.Name .. " tiene acceso premium.")
+            -- Aquí puedes añadir funcionalidades especiales para jugadores premium
+        else
+            print(player.Name .. " no tiene acceso premium.")
+        end
+    end)
 
 local Tab = {TabsContainer = TabsContainer, Container = Container}
 
@@ -434,13 +444,7 @@ addCorner(tabButton, 10)
     tabFrame.Position = UDim2.new(0, 0, 0, 1)
     tabFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
     tabFrame.BackgroundTransparency = 1
-    tabFrame.Visible = true
-    local cant = #Container:GetChildren()
-    if cant == 0 then
-        tabFrame.Visible = true
-    else
-        tabFrame.Visible = false
-    end
+    tabFrame.Visible = false
     tabFrame.Parent = Container
     addCorner(tabFrame, 5)
 
@@ -530,8 +534,8 @@ addCorner(tabButton, 10)
             label.Size = UDim2.new(1, 0, 0, 30)
             label.Position = UDim2.new(0, 0, 0.5, -15)
             label.BackgroundTransparency = 1
-            label.Text = "Premium only"
-            label.TextColor3 = Color3.new(1, 1, 1)
+            label.Text = "Deluxe only"
+            label.TextColor3 = Color3.fromRGB(243, 156, 18)
             label.Font = Enum.Font.GothamBold
             label.TextSize = 20
             label.Parent = overlay
@@ -681,7 +685,7 @@ openButton.BackgroundTransparency = 1
 openButton.Parent = pickerFrame
 
 local colorPickerPopup = Instance.new("Frame")
-colorPickerPopup.Size = UDim2.new(0, 180, 0, 200)
+colorPickerPopup.Size = UDim2.new(0, 300, 0, 150)
 colorPickerPopup.Position = UDim2.new(0.5, -150, 0.5, -75)
 colorPickerPopup.BackgroundColor3 = Color3.fromRGB(128, 0, 128) 
 colorPickerPopup.BackgroundTransparency = 0.6 
@@ -909,7 +913,7 @@ end
     return toggleFrame, label
 end
 
-function Library.addSlider(container, name, minValue, maxValue, defaultValue, callback)
+function Library.addSlider(container, name, descriptionText, minValue, maxValue, defaultValue, callback)
     local sliderFrame = Instance.new("Frame")
     sliderFrame.Size = TamanoContenedor
     sliderFrame.BackgroundColor3 = FrameContenedor
@@ -947,6 +951,17 @@ function Library.addSlider(container, name, minValue, maxValue, defaultValue, ca
     sliderTextBox.ClearTextOnFocus = false
     sliderTextBox.Parent = sliderFrame
     addCorner(sliderTextBox, 6)
+    
+    local label = Instance.new("TextLabel")
+label.Size = UDim2.new(1, -10, 0, 24)
+label.Position = UDim2.new(0, 10, 0, 22)
+label.Text = descriptionText or ""
+label.TextSize = 9
+label.Font = Enum.Font.Gotham
+label.BackgroundTransparency = 1
+label.TextXAlignment = Enum.TextXAlignment.Left
+label.TextColor3 = Color3.fromRGB(200, 200, 200)
+label.Parent = sliderFrame
 
     local sliderTrack = Instance.new("Frame")
     sliderTrack.Size = UDim2.new(0, 120, 0, 6)
