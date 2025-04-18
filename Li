@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("a")
+print("susjsjsj")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -342,6 +342,11 @@ end)
     TabsListLayout.SortOrder = Enum.SortOrder.LayoutOrder
     TabsListLayout.Padding = UDim.new(0, 8)
     TabsListLayout.Parent = TabsContainer
+    
+    local padding = Instance.new("UIPadding")
+padding.PaddingLeft = UDim.new(0, 7)
+padding.PaddingRight = UDim.new(0, 7)
+padding.Parent = TabsContainer
 
     TabsListLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
         TabsContainer.CanvasSize = UDim2.new(0, 0, 0, TabsListLayout.AbsoluteContentSize.Y)
@@ -401,11 +406,6 @@ function Tab:AddTab(isallowedUserIds, tabName)
     addCorner(borderFrame, redondoContenedor)
 addCorner(tabButton, 10)
 
-local padding = Instance.new("UIPadding")
-padding.PaddingLeft = UDim.new(0, 5)
-padding.PaddingRight = UDim.new(0, 5)
-padding.Parent = frameScroll
-
     local tabFrame = Instance.new("Frame")
     tabFrame.Size = UDim2.new(1, 0, 1, -15)
     tabFrame.Position = UDim2.new(0, 0, 0, 1)
@@ -430,6 +430,11 @@ padding.Parent = frameScroll
     buttonLayout.Padding = UDim.new(0, 8)
     buttonLayout.SortOrder = Enum.SortOrder.LayoutOrder
     buttonLayout.Parent = frameScroll
+    
+    local padding = Instance.new("UIPadding")
+padding.PaddingLeft = UDim.new(0, 7)
+padding.PaddingRight = UDim.new(0, 7)
+padding.Parent = frameScroll
 
     buttonLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
         frameScroll.CanvasSize = UDim2.new(0, 0, 0, buttonLayout.AbsoluteContentSize.Y)
