@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("xd")
+print("xddddd")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
